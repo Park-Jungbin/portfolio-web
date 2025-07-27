@@ -1,0 +1,710 @@
+<!-- One-Page Portfolio UI • Intro-First • Smaller Portrait • Minimal CTA + Card Details & Tooltip + Project Media Lightbox -->
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quant Portfolio Sketch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-900 font-sans">
+    <!-- Top Nav (lean) -->
+    <header class="border-b sticky top-0 bg-white/90 backdrop-blur z-40">
+      <div class="max-w-6xl mx-auto px-8 py-3 flex items-center justify-between">
+        <a href="#hero" class="text-lg font-semibold">JB Park</a>
+        <nav class="hidden sm:flex items-center gap-6 text-sm text-gray-700">
+          <a href="#performance" class="hover:text-blue-700">Performance</a>
+          <a href="#projects" class="hover:text-blue-700">Projects</a></nav>
+        <a href="#contact" class="text-sm text-gray-500 hover:text-blue-700">Contact</a>
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-8 py-6 space-y-12 md:space-y-16">
+      <!-- Hero: Smaller photo + narrative intro (intro-first) -->
+      <section id="hero" class="grid grid-cols-12 gap-4 items-start">
+        <!-- Small Photo -->
+        <div class="col-span-12 md:col-span-2">
+          <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gray-100 overflow-hidden flex items-center justify-center mx-auto md:mx-0">
+            <span class="text-gray-400 text-xs">[사진]</span>
+          </div>
+        </div>
+        <!-- Intro Narrative -->
+        <div class="col-span-12 md:col-span-10 space-y-4">
+          <div>
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight">박정빈 (JB Park)</h1>
+            <p class="text-lg md:text-xl mt-1">퀀트 리서처 · 시스템 트레이딩 모델러</p>
+            <p class="text-sm text-gray-500 mt-1">Last updated: 2025.07</p>
+          </div>
+          <p class="text-base md:text-lg text-gray-800 leading-relaxed max-w-3xl">
+            데이터로 설명 가능한 신호를 선호하며, 과최적화를 피하고 집행 리스크를 먼저 생각합니다. 모델 복잡도는 낮추되,
+            레짐 변화와 거래비용에 견딜 수 있도록 설계합니다. 결과는 단순한 지표보다 <strong>일관성</strong>과 <strong>용량 대응력</strong>으로 평가하며,
+            서로 다른 소스의 알파 상관을 낮게 유지하는 포트폴리오 구성을 지향합니다.
+          </p>
+        </div>
+      </section>
+
+      <!-- Performance (primary section) -->
+      <section id="performance" class="space-y-8 scroll-mt-16">
+        <div class="flex items-baseline justify-between">
+          <div class="flex items-center gap-2">
+            <h2 class="text-2xl font-semibold">Performance</h2>
+            <!-- Tooltip: hover ? -->
+            <div class="relative group">
+              <span class="inline-flex items-center justify-center w-5 h-5 text-xs rounded-full border border-gray-300 text-gray-600">?</span>
+              <div class="hidden group-hover:block absolute left-0 top-6 z-20 w-80 p-3 text-sm bg-white border rounded-lg shadow-xl">
+                <ul class="list-disc pl-4 space-y-1 text-gray-700">
+                  <li>제가 제작한 모델 중 각 테마를 대표하는 모델만 선별해 게시했습니다.</li>
+                  <li>모든 모델은 overfitting/stress/robustness 테스트를 통과하여 <strong>실운용 중</strong>입니다.</li>
+                  <li>거래비용을 보수적으로 가정한 백테스팅/트래킹 성과로, <strong>실운용 성과가 표시된 값보다 더 우수</strong>하게 나오는 경향이 있습니다.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <div class="flex flex-wrap gap-3">
+          <button class="tab-btn px-4 py-2 font-medium rounded-lg border" data-tab="kr">한국 주식</button>
+          <button class="tab-btn px-4 py-2 font-medium rounded-lg border" data-tab="us">미국 주식</button>
+          <button class="tab-btn px-4 py-2 font-medium rounded-lg border" data-tab="regime">마켓 레짐</button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="tab-contents">
+          <!-- Korean Stocks Tab (4 cards) -->
+          <div class="tab-content" id="tab-kr">
+            <!-- Model Card: KR-Momentum -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-kr-mom" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">KR-Momentum</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: Kospi200</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 50–80억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.50</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 3.80%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 3.0y</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-kr-mom" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: KR-MeanReversion -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-kr-mr" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">KR-MeanReversion</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: Kospi200</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 40–70억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.20</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 4.10%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 3.0y+</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-kr-mr" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: KR-StatArb -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-kr-statarb" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">KR-StatArb</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: Kospi200</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 30–60억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.10</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 4.30%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 4.0y</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-kr-statarb" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: KR-Value -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-kr-value" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">KR-Value</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: Kospi200</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 60–100억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 1.90</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 5.20%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 5.0y+</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-kr-value" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- US Stocks Tab (5 cards) -->
+          <div class="tab-content hidden" id="tab-us">
+            <!-- Model Card: US-MeanReversion -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-us-mr" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">US-MeanReversion</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: S&P500</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 100–150억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.90</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 4.50%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 4.0y+</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-us-mr" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: US-Momentum -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-us-mom" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">US-Momentum</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: S&P500</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 90–130억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 3.10</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 3.60%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 3.0y+</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-us-mom" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: US-StatArb -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-us-statarb" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">US-StatArb</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: S&P500</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 80–140억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.40</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 4.90%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 5.0y+</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-us-statarb" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: US-Pairs -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-us-pairs" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">US-Pairs</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: S&P500</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 60–110억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.20</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 4.20%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 4.0y</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-us-pairs" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Card: US-Quality -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-us-quality" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">US-Quality</h3>
+                  <p class="text-sm text-gray-600 mt-1">BM: S&P500</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 120–180억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.00</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 4.00%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 6.0y</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-us-quality" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Market Regime Tab (1 card only) -->
+          <div class="tab-content hidden" id="tab-regime">
+            <!-- Model Card: Regime-Switch -->
+            <div class="border rounded-2xl p-6 shadow-sm mb-6">
+              <div class="flex justify-between items-start gap-4 cursor-pointer select-none" data-card-toggle="#details-reg-switch" role="button" tabindex="0" aria-expanded="false">
+                <div>
+                  <h3 class="text-xl font-semibold">Regime-Switch</h3></div>
+                <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity 80–120억</div>
+              </div>
+              <div class="mt-4 grid grid-cols-3 gap-6">
+                <div class="space-y-2 text-sm font-mono tabular-nums">
+                  <div><span class="text-gray-500 font-sans">Sharpe</span> 2.70</div>
+                  <div><span class="text-gray-500 font-sans">Max DD</span> 5.00%</div>
+                  <div><span class="text-gray-500 font-sans">OOS</span> 5.0y+</div>
+                </div>
+                <div class="h-44 bg-gray-100 rounded">[누적 수익률]</div>
+                <div class="h-44 bg-gray-100 rounded">[드로다운/롤링Sharpe]</div>
+              </div>
+              <!-- Details Panel -->
+              <div id="details-reg-switch" class="mt-4 border-t pt-4 hidden">
+                <div class="grid md:grid-cols-3 gap-6 text-sm">
+                  <div class="space-y-2">
+                    <div class="text-gray-500">가정</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>수수료/슬리피지 보수적 가정</li>
+                      <li>참여율·체결 규칙 고정</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">검증</div>
+                    <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                      <li>워크포워드 & 레짐 스트레스</li>
+                      <li>코스트 민감도 체크</li>
+                    </ul>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="text-gray-500">추가 시각화</div>
+                    <div class="h-24 bg-gray-100 rounded">[월별 수익 히트맵]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects (tertiary, vertical list) -->
+      <section id="projects" class="space-y-8">
+        <h2 class="text-2xl font-semibold">Projects</h2>
+        <div class="space-y-6 pt-4">
+          <!-- 1. 크립토 트레이딩 연구 환경 개발 (진행중) -->
+          <article class="rounded-xl border p-4 bg-white">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-semibold">크립토 트레이딩 연구 환경 개발 <span class="text-xs text-gray-500">(진행중)</span></h3>
+              <span class="text-xs text-gray-500">2025.7~</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-1">Hummingbot 프레임워크와 패널 데이터 기반 연구 환경 통합</p>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/crypto_env_1.png" data-media-title="Crypto Env Overview" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="video" data-media-src="/assets/projects/crypto_env_demo.mp4" data-media-title="Integration Demo (mp4)" aria-haspopup="dialog">영상</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/crypto_env_2.png" data-media-title="Panel Data Layout" aria-haspopup="dialog">이미지</button>
+            </div>
+          </article>
+
+          <!-- 2. 틱 데이터 기반 주문집행 알고리즘 개발 -->
+          <article class="rounded-xl border p-4 bg-white">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-semibold">틱 데이터 기반 주문집행 알고리즘 개발<span class="ml-2 text-[11px] text-emerald-700 bg-emerald-50 border border-emerald-200 rounded px-2 py-0.5">발표 우수상</span></h3>
+              <span class="text-xs text-gray-500">2025.4–2025.7</span>
+            </div>
+            <p class="text-[13px] text-gray-600 mt-1">(서울대학교 AI CEO 과정 · 빅데이터 핀테크 과정 · 법무법인 영진) KOSPI200 구성종목의 오더북 데이터를 활용해 VWAP/TWAP을 능가하는 집행 전략 개발</p>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/exe_algo_backtest.png" data-media-title="Backtest Overview" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/exe_algo_orderbook.png" data-media-title="Orderbook Features" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="video" data-media-src="/assets/projects/exe_algo_demo.mp4" data-media-title="Execution Demo (mp4)" aria-haspopup="dialog">영상</button>
+            </div>
+          </article>
+
+          <!-- 3. 농구게임 -->
+          <article class="rounded-xl border p-4 bg-white">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-semibold">농구게임</h3>
+              <span class="text-xs text-gray-500">2024.10</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-1">컴퓨터프로그래밍 수업 중간 개인 프로젝트. 중독성 있음</p>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="video" data-media-src="/assets/projects/basket_game.mp4" data-media-title="Gameplay (mp4)" aria-haspopup="dialog">영상</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/basket_ui.png" data-media-title="UI Screenshot" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/basket_score.png" data-media-title="Score Screen" aria-haspopup="dialog">이미지</button>
+            </div>
+          </article>
+
+          <!-- 4. 벽돌깨기 앱 -->
+          <article class="rounded-xl border p-4 bg-white">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-semibold">벽돌깨기 앱</h3>
+              <span class="text-xs text-gray-500">2024.12</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-1">컴퓨터프로그래밍 수업 기말 개인 프로젝트. 타격감 있음</p>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="video" data-media-src="/assets/projects/brick_breaker.mp4" data-media-title="Gameplay (mp4)" aria-haspopup="dialog">영상</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/brick_levels.png" data-media-title="Levels" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/brick_ui.png" data-media-title="UI" aria-haspopup="dialog">이미지</button>
+            </div>
+          </article>
+
+          <!-- 5. 수강신청 첫클릭 프로그램 -->
+          <article class="rounded-xl border p-4 bg-white">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-semibold">수강신청 첫클릭 프로그램</h3>
+              <span class="text-xs text-gray-500">2024.8</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-1">&lt;10ms 레이턴시 확보. 전필 수강제한 안 풀어주는 컴퓨터공학부를 향한 다전공생의 소리없는 아우성</p>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/first_click_arch.png" data-media-title="Architecture" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="video" data-media-src="/assets/projects/first_click_demo.mp4" data-media-title="Demo (mp4)" aria-haspopup="dialog">영상</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500" data-media-type="image" data-media-src="/assets/projects/first_click_ui.png" data-media-title="UI" aria-haspopup="dialog">이미지</button>
+            </div>
+          </article>
+
+          <!-- 6. SNU GSDS Ambient AI Contest 3rd prize -->
+          <article class="rounded-xl border p-4 bg-white">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-semibold">SNU GSDS Ambient AI Contest <span class="ml-1">3rd prize</span>
+                <span class="ml-2 text-[11px] text-indigo-700 bg-indigo-50 border border-indigo-200 rounded px-2 py-0.5">수상</span>
+              </h3>
+              <span class="text-xs text-gray-500">2023.1</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-1">유리창으로 향하는 야생 조류를 on-device(Coral Board) 탐지해 음성 신호로 쫓아 충돌을 방지</p>
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-indigo-500" data-media-type="image" data-media-src="/assets/projects/ambient_ai_setup.png" data-media-title="Setup" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-indigo-500" data-media-type="image" data-media-src="/assets/projects/ambient_ai_model.png" data-media-title="Model" aria-haspopup="dialog">이미지</button>
+              <button class="aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-indigo-500" data-media-type="video" data-media-src="/assets/projects/ambient_ai_demo.mp4" data-media-title="On-device Demo (mp4)" aria-haspopup="dialog">영상</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact (de-emphasized) -->
+ (de-emphasized) -->
+      <section id="contact" class="pt-4">
+        <div class="text-sm text-gray-600 flex flex-wrap items-center gap-4">
+          <a class="underline hover:text-blue-700" href="mailto:your@email">email</a>
+          <a class="underline hover:text-blue-700" href="#">LinkedIn</a>
+        </div>
+      </section>
+
+      <footer class="pt-6 text-xs text-gray-500">
+        <p>본 페이지의 성과는 정보 제공 목적이며 투자 권유가 아닙니다. 과거 성과는 미래 수익을 보장하지 않습니다. 수수료/슬리피지 가정 반영.</p>
+      </footer>
+    </div>
+
+    <!-- Media Lightbox (shared) -->
+    <div id="media-modal" class="fixed inset-0 hidden items-center justify-center z-50">
+      <div class="absolute inset-0 bg-black/70" data-close></div>
+      <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-[min(92vw,960px)] mx-auto p-4">
+        <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-700" data-close aria-label="Close">✕</button>
+        <div id="media-container" class="w-full"></div>
+        <div id="media-caption" class="text-sm text-gray-500 mt-2"></div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Tabs
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          contents.forEach(c => c.classList.add('hidden'));
+          document.getElementById(`tab-${tab.dataset.tab}`).classList.remove('hidden');
+          tabs.forEach(t => t.classList.remove('bg-blue-600','text-white','border-blue-600'));
+          tab.classList.add('bg-blue-600','text-white','border-blue-600');
+        });
+      });
+      if (tabs[0]) tabs[0].click(); // Activate default tab
+
+      // Card details toggle
+      document.querySelectorAll('[data-card-toggle]').forEach(el => {
+        const key = el.getAttribute('data-card-toggle');
+        const panel = document.querySelector(key);
+        el.addEventListener('click', () => {
+          if (!panel) return;
+          const expanded = el.getAttribute('aria-expanded') === 'true';
+          panel.classList.toggle('hidden');
+          el.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        });
+        el.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            el.click();
+          }
+        });
+      });
+
+      // Media Lightbox logic for Projects
+      const modal = document.getElementById('media-modal');
+      const mediaContainer = document.getElementById('media-container');
+      const mediaCaption = document.getElementById('media-caption');
+
+      function openModalWith(type, src, title) {
+        mediaContainer.innerHTML = '';
+        mediaCaption.textContent = title || '';
+        if (type === 'image') {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = title || 'project image';
+          img.className = 'w-full rounded-lg';
+          mediaContainer.appendChild(img);
+        } else if (type === 'video') {
+          const video = document.createElement('video');
+          video.src = src;
+          video.controls = true;
+          video.playsInline = true;
+          video.className = 'w-full rounded-lg';
+          mediaContainer.appendChild(video);
+        }
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        mediaContainer.innerHTML = '';
+        mediaCaption.textContent = '';
+      }
+
+      document.querySelectorAll('[data-media-type]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-media-type');
+          const src = btn.getAttribute('data-media-src');
+          const title = btn.getAttribute('data-media-title');
+          openModalWith(type, src, title);
+        });
+      });
+
+      modal.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', closeModal));
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
+    </script>
+  </body>
+</html>
