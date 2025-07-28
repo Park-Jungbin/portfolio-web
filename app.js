@@ -111,11 +111,13 @@ class PortfolioApp {
       }
     });
 
-    // Modal close events
+    // Modal close events - simplified and more reliable approach
     const modal = document.getElementById('media-modal');
     if (modal) {
       modal.addEventListener('click', (e) => {
-        if (e.target.hasAttribute('data-close') || e.target === modal) {
+        // Close if clicking on background or close button
+        if (e.target === modal || e.target.closest('[data-close]')) {
+          e.preventDefault();
           this.closeMediaModal();
         }
       });
@@ -328,14 +330,14 @@ class PortfolioApp {
     let mediaElement;
     if (mediaType === 'video') {
       mediaElement = `
-        <video controls class="w-full h-auto max-h-[70vh] rounded-lg">
+        <video controls class="w-full h-auto max-h-[70vh] rounded-lg" onclick="event.stopPropagation();">
           <source src="${mediaSrc}" type="video/mp4">
           <p>브라우저가 비디오를 지원하지 않습니다.</p>
         </video>
       `;
     } else {
       mediaElement = `
-        <img src="${mediaSrc}" alt="${mediaTitle}" class="w-full h-auto max-h-[70vh] object-contain rounded-lg">
+        <img src="${mediaSrc}" alt="${mediaTitle}" class="w-full h-auto max-h-[70vh] object-contain rounded-lg" onclick="event.stopPropagation();">
       `;
     }
 

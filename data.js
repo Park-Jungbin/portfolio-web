@@ -209,7 +209,7 @@ const DATA = {
                 id: 'us-statarb',
                 name: 'Barbell',
                 benchmark: 'S&P500',
-                capacity: '10조 이상',
+                capacity: '1조~5조',
                 metrics: {
                     inSample: {
                         sharpe: '1.39',
@@ -288,7 +288,7 @@ const DATA = {
         regime: [
             {
                 id: 'regime-switch',
-                name: 'Regime-Switch',
+                name: 'Market Regime',
                 benchmark: 'S&P500 또는 VN30',
                 description: '고객들에게 마켓 레짐에 대한 뷰를 제공합니다.',
                 assumptions: [
@@ -362,7 +362,7 @@ const DATA = {
             media: [
                 {
                     type: 'video',
-                    src: './assets/projects/basket_game.mp4',
+                    src: './assets/projects/LetItGoal.mp4',
                     title: 'Gameplay (mp4)'
                 }
             ]
