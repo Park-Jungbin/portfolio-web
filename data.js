@@ -31,12 +31,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '../assets/models/dividend_10_left.png',
+                        src: './assets/models/dividend_10_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '../assets/models/dividend_10_right.png',
+                        src: './assets/models/dividend_10_right.png',
                         title: '누적 초과 수익률'
                     }
                 ]
