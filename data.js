@@ -354,10 +354,10 @@ const DATA = {
         },
         {
             id: 'first-click',
-            title: '수강신청 첫클릭 프로그램',
+            title: '티켓팅/수강신청 첫클릭 프로그램',
             status: '완료',
             period: '2024.8',
-            description: '<10ms 레이턴시 확보. 전필 수강제한 안 풀어주는 컴퓨터공학부를 향한 다전공생의 소리없는 아우성',
+            description: '<10ms 레이턴시 확보. 50대1 이상의 경쟁률을 극복하고 컴퓨터프로그래밍 수강신청 성공',
             techStack: ['JavaScript'],
             media: []
         },
