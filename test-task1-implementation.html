@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1 Implementation Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-6">Task 1: Simplified Performance Card Test</h1>
+        
+        <div id="test-container"></div>
+        
+        <div class="mt-8 p-4 bg-white rounded-lg border">
+            <h2 class="text-lg font-semibold mb-4">Test Results:</h2>
+            <ul id="test-results" class="space-y-2"></ul>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="components.js"></script>
+    <script>
+        // Test the implementation
+        function runTests() {
+            const testResults = document.getElementById('test-results');
+            const testContainer = document.getElementById('test-container');
+            
+            // Test with a sample model
+            const testModel = DATA.models.kr[0]; // KR-Momentum
+            
+            // Generate the card
+            const cardHtml = ComponentGenerator.generateModelCard(testModel);
+            testContainer.innerHTML = cardHtml;
+            
+            // Test 1: Check if expandable elements are removed
+            const cardToggle = testContainer.querySelector('[data-card-toggle]');
+            const ariaExpanded = testContainer.querySelector('[aria-expanded]');
+            const detailsPanel = testContainer.querySelector('.details-panel');
+            
+            addTestResult(testResults, 'Expandable toggle removed', !cardToggle, 'data-card-toggle attribute should not exist');
+            addTestResult(testResults, 'ARIA expanded removed', !ariaExpanded, 'aria-expanded attribute should not exist');
+            addTestResult(testResults, 'Details panel removed', !detailsPanel, 'details-panel class should not exist');
+            
+            // Test 2: Check if description section exists and is visible
+            const descriptionSection = testContainer.querySelector('.description-always-visible');
+            const descriptionText = testContainer.querySelector('.description-always-visible p');
+            
+            addTestResult(testResults, 'Description section exists', !!descriptionSection, 'description-always-visible class should exist');
+            addTestResult(testResults, 'Description text exists', !!descriptionText, 'Description paragraph should exist');
+            
+            // Test 3: Check if description content matches model.description
+            if (descriptionText) {
+                const expectedText = testModel.description;
+                const actualText = descriptionText.textContent.trim();
+                addTestResult(testResults, 'Description content correct', actualText === expectedText, `Expected: "${expectedText}", Got: "${actualText}"`);
+            }
+            
+            // Test 4: Check if header is no longer clickable
+            const header = testContainer.querySelector('.model-card-header');
+            const hasClickableStyles = header && (
+                header.hasAttribute('data-card-toggle') ||
+                header.hasAttribute('role') ||
+                header.hasAttribute('tabindex') ||
+                header.classList.contains('cursor-pointer')
+            );
+            
+            addTestResult(testResults, 'Header not clickable', !hasClickableStyles, 'Header should not have clickable attributes');
+            
+            // Test 5: Check if description is always visible (not hidden)
+            const isDescriptionVisible = descriptionSection && !descriptionSection.classList.contains('hidden');
+            addTestResult(testResults, 'Description always visible', isDescriptionVisible, 'Description should be visible by default');
+        }
+        
+        function addTestResult(container, testName, passed, details) {
+            const li = document.createElement('li');
+            li.className = `flex items-center gap-2 ${passed ? 'text-green-600' : 'text-red-600'}`;
+            li.innerHTML = `
+                <span class="w-4 h-4 rounded-full ${passed ? 'bg-green-500' : 'bg-red-500'}"></span>
+                <span class="font-medium">${testName}:</span>
+                <span>${passed ? 'PASS' : 'FAIL'}</span>
+                ${details ? `<span class="text-sm text-gray-500">- ${details}</span>` : ''}
+            `;
+            container.appendChild(li);
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

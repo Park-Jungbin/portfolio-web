@@ -5,12 +5,7 @@ class ComponentGenerator {
   static generateModelCard(model) {
     return `
       <div class="model-card border rounded-2xl p-6 shadow-sm mb-6" data-model-id="${model.id}">
-        <div class="model-card-header flex justify-between items-start gap-4 cursor-pointer select-none"
-             data-card-toggle="#details-${model.id}" 
-             role="button" 
-             tabindex="0" 
-             aria-expanded="false"
-             aria-controls="details-${model.id}">
+        <div class="model-card-header flex justify-between items-start gap-4">
           <div>
             <h3 class="text-xl font-semibold">${model.name}</h3>
             <p class="text-sm text-gray-600 mt-1">BM: ${model.benchmark}</p>
@@ -29,25 +24,11 @@ class ComponentGenerator {
           ${this.generateModelMediaSlot(model.media, 1, '드로다운/롤링Sharpe 차트')}
         </div>
         
-        <!-- Details Panel -->
-        <div id="details-${model.id}" class="details-panel mt-4 border-t pt-4 hidden" role="region" aria-labelledby="details-${model.id}-title">
-          <div class="grid md:grid-cols-3 gap-6 text-sm">
-            <div class="space-y-2">
-              <div class="text-gray-500 font-medium">가정</div>
-              <ul class="list-disc pl-4 text-gray-700 space-y-1">
-                ${model.assumptions.map(assumption => `<li>${assumption}</li>`).join('')}
-              </ul>
-            </div>
-            <div class="space-y-2">
-              <div class="text-gray-500 font-medium">검증</div>
-              <ul class="list-disc pl-4 text-gray-700 space-y-1">
-                ${model.validation.map(validation => `<li>${validation}</li>`).join('')}
-              </ul>
-            </div>
-            <div class="space-y-2">
-              <div class="text-gray-500 font-medium">추가 시각화</div>
-              <div class="chart-placeholder h-24 rounded">[월별 수익 히트맵]</div>
-            </div>
+        <!-- Description Section -->
+        <div class="description-always-visible mt-4 border-t pt-4">
+          <div class="text-sm">
+            <div class="text-gray-500 font-medium mb-2">Description</div>
+            <p class="text-gray-700 leading-relaxed">${model.description}</p>
           </div>
         </div>
       </div>
@@ -176,20 +157,30 @@ class ComponentGenerator {
       const mediaTitle = media.title || placeholderText;
       
       return `
-        <button class="media-btn-chart h-56 rounded-lg"
+        <button class="media-btn-chart media-thumbnail adaptive-aspect rounded-lg"
                 data-media-type="${mediaType}" 
                 data-media-src="${mediaSrc}"
                 data-media-title="${mediaTitle}" 
+                data-placeholder-text="${placeholderText}"
                 aria-haspopup="dialog"
                 aria-label="${mediaTitle}"
                 role="button"
-                tabindex="0">
+                tabindex="0"
+                style="background-image: url('${mediaSrc}');">
+          <div class="thumbnail-overlay">
+            <span class="media-type-indicator">${mediaType === 'video' ? '▶' : '🖼'}</span>
+            <span class="media-title">${mediaTitle}</span>
+          </div>
           <span class="sr-only">${mediaTitle}</span>
-          <span aria-hidden="true">${mediaTitle}</span>
+          <img src="${mediaSrc}" 
+               alt="${mediaTitle}"
+               style="display: none;"
+               onload="this.parentElement.style.aspectRatio = this.naturalWidth + '/' + this.naturalHeight"
+               onerror="ComponentGenerator.handleMediaError(this.parentElement, '${placeholderText}')">
         </button>
       `;
     } else {
-      return `<div class="chart-placeholder h-56 rounded-lg">[${placeholderText}]</div>`;
+      return `<div class="chart-placeholder adaptive-aspect rounded-lg">[${placeholderText}]</div>`;
     }
   }
 
@@ -232,6 +223,13 @@ class ComponentGenerator {
         <p class="text-gray-600">${message}</p>
       </div>
     `;
+  }
+
+  // Handle media loading errors
+  static handleMediaError(element, placeholderText) {
+    element.style.backgroundImage = '';
+    element.classList.remove('media-thumbnail');
+    element.innerHTML = `<span class="sr-only">${element.getAttribute('data-media-title')}</span><span aria-hidden="true">[${placeholderText}]</span>`;
   }
 }
 

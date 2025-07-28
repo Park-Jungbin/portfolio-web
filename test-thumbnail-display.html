@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbnail Display Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-8">Performance Card Media Thumbnail Test - Adaptive Aspect Ratio</h1>
+        
+        <!-- Test with existing image -->
+        <div class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">Test 1: Existing Image (kr_momentum_performance.png)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="test1-container">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Test with missing image -->
+        <div class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">Test 2: Missing Image (fallback behavior)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="test2-container">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Test with video media -->
+        <div class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">Test 3: Video Media</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="test3-container">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="components.js"></script>
+    <script>
+        // Test data
+        const testMediaExisting = [
+            {
+                type: 'image',
+                src: '/assets/models/kr_momentum_performance.png',
+                title: '누적 수익률 차트'
+            },
+            {
+                type: 'image',
+                src: '/assets/models/kr_momentum_drawdown.png',
+                title: '드로다운 분석'
+            }
+        ];
+        
+        const testMediaMissing = [
+            {
+                type: 'image',
+                src: '/assets/models/nonexistent_image.png',
+                title: '존재하지 않는 이미지'
+            },
+            {
+                type: 'image',
+                src: '/assets/models/another_missing.png',
+                title: '또 다른 누락 이미지'
+            }
+        ];
+        
+        const testMediaVideo = [
+            {
+                type: 'video',
+                src: '/assets/projects/brick_breaker.mp4',
+                title: '벽돌깨기 게임플레이'
+            },
+            {
+                type: 'video',
+                src: '/assets/models/missing_video.mp4',
+                title: '누락된 비디오'
+            }
+        ];
+        
+        // Populate test containers
+        document.getElementById('test1-container').innerHTML = 
+            ComponentGenerator.generateModelMediaSlot(testMediaExisting, 0, '누적 수익률 차트') +
+            ComponentGenerator.generateModelMediaSlot(testMediaExisting, 1, '드로다운/롤링Sharpe 차트');
+            
+        document.getElementById('test2-container').innerHTML = 
+            ComponentGenerator.generateModelMediaSlot(testMediaMissing, 0, '누적 수익률 차트') +
+            ComponentGenerator.generateModelMediaSlot(testMediaMissing, 1, '드로다운/롤링Sharpe 차트');
+            
+        document.getElementById('test3-container').innerHTML = 
+            ComponentGenerator.generateModelMediaSlot(testMediaVideo, 0, '시뮬레이션 영상') +
+            ComponentGenerator.generateModelMediaSlot(testMediaVideo, 1, '분석 영상');
+    </script>
+</body>
+</html>
