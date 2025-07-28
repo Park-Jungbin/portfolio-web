@@ -4,20 +4,20 @@ const DATA = {
         kr: [
             {
                 id: 'kr-momentum',
-                name: 'KR-Momentum',
+                name: 'Dividend universe',
                 benchmark: 'Kospi200',
-                capacity: '50–80억',
+                capacity: '1조~5조',
                 metrics: {
                     inSample: {
-                        sharpe: '1.85',
-                        cagr: '18.4%'
+                        sharpe: '1.08',
+                        cagr: '23.02%'
                     },
                     outSample: {
-                        sharpe: '1.72',
-                        cagr: '16.8%'
+                        sharpe: '2.88',
+                        cagr: '72.0%'
                     }
                 },
-                description: '한국 주식 시장의 모멘텀 효과를 활용한 중단기 전략',
+                description: '배당을 오랜 기간 지급한 대형주 중에서, 시장 대비 초과성과를 기록할 것으로 예상되는 종목에 베팅하는 전략입니다.',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 15bp)',
                     '참여율 20% 이하 제한',
@@ -31,32 +31,32 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/kr_momentum_performance.png',
-                        title: '누적 수익률 차트'
+                        src: '/assets/models/dividend_10_left.png',
+                        title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/kr_momentum_drawdown.png',
-                        title: '드로다운 분석'
+                        src: '/assets/models/dividend_10_right.png',
+                        title: '누적 초과 수익률'
                     }
                 ]
             },
             {
                 id: 'kr-meanreversion',
-                name: 'KR-MeanReversion',
+                name: 'Event_driven_1',
                 benchmark: 'Kospi200',
-                capacity: '40–70억',
+                capacity: '100–500억',
                 metrics: {
                     inSample: {
-                        sharpe: '1.92',
-                        cagr: '16.7%'
+                        sharpe: '2.33',
+                        cagr: '281.57%'
                     },
                     outSample: {
-                        sharpe: '1.78',
-                        cagr: '15.2%'
+                        sharpe: '2.6',
+                        cagr: '501.41%'
                     }
                 },
-                description: '한국 주식 시장의 평균회귀 효과를 활용한 단기 전략',
+                description: '경제 논리로 설명 불가능하지만, 어떤 이벤트가 발생하면 단기적으로 주가가 급격히 상승합니다. 해당 이벤트는 중소형주에서 주로 발생하는 경향이 있습니다. 따라서 Aum이 커졌을 때 유동성 충격으로 수익률이 악화될 수 있습니다. 포트폴리오 집중도가 높기 때문에 Monotonic한 수익을 추구하기는 어렵습니다.',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 18bp)',
                     '참여율 15% 이하 제한',
@@ -70,27 +70,32 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/kr_meanreversion_performance.png',
-                        title: '누적 수익률 차트'
+                        src: '/assets/models/anomaly_1_left.png',
+                        title: '누적 로그 수익률'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/anomaly_1_right.png',
+                        title: '누적 초과 수익률'
                     }
                 ]
             },
             {
                 id: 'kr-statarb',
-                name: 'KR-StatArb',
+                name: 'Event_driven_2',
                 benchmark: 'Kospi200',
-                capacity: '30–60억',
+                capacity: '10억 이하',
                 metrics: {
                     inSample: {
-                        sharpe: '2.14',
-                        cagr: '19.8%'
+                        sharpe: '1.58',
+                        cagr: '46.75%'
                     },
                     outSample: {
-                        sharpe: '1.96',
-                        cagr: '17.9%'
+                        sharpe: '2.38',
+                        cagr: '70.04%'
                     }
                 },
-                description: '한국 주식 시장의 통계적 차익거래 전략',
+                description: '소형주에서 나타나는 이상 현상에서 알파를 취합니다. 자금 수용력이 매우 작습니다.',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 20bp)',
                     '참여율 12% 이하 제한',
@@ -104,13 +109,13 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/kr_statarb_performance.png',
-                        title: '누적 수익률 차트'
+                        src: '/assets/models/lynch_cut_left.png',
+                        title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/kr_statarb_correlation.png',
-                        title: '상관관계 분석'
+                        src: '/assets/models/lynch_cut_right.png',
+                        title: '누적 초과 수익률'
                     },
                     {
                         type: 'image',
@@ -119,58 +124,25 @@ const DATA = {
                     }
                 ]
             },
-            {
-                id: 'kr-value',
-                name: 'KR-Value',
-                benchmark: 'Kospi200',
-                capacity: '60–100억',
-                metrics: {
-                    inSample: {
-                        sharpe: '1.67',
-                        cagr: '15.2%'
-                    },
-                    outSample: {
-                        sharpe: '1.51',
-                        cagr: '13.8%'
-                    }
-                },
-                description: '한국 주식 시장의 가치 투자 전략',
-                assumptions: [
-                    '수수료/슬리피지 보수적 가정 (편도 12bp)',
-                    '참여율 25% 이하 제한',
-                    '체결 규칙 고정 (VWAP 기준)'
-                ],
-                validation: [
-                    '워크포워드 & 레짐 스트레스 테스트',
-                    '코스트 민감도 체크',
-                    '로버스트니스 검증'
-                ],
-                media: [
-                    {
-                        type: 'image',
-                        src: '/assets/models/kr_value_performance.png',
-                        title: '누적 수익률 차트'
-                    }
-                ]
-            }
+            
         ],
         us: [
             {
                 id: 'us-meanreversion',
-                name: 'US-MeanReversion',
+                name: 'Trend-following_1',
                 benchmark: 'S&P500',
-                capacity: '100–150억',
+                capacity: '10조 이상',
                 metrics: {
                     inSample: {
-                        sharpe: '1.78',
-                        cagr: '17.3%'
+                        sharpe: '0.91',
+                        cagr: '19.24%'
                     },
                     outSample: {
-                        sharpe: '1.64',
-                        cagr: '15.9%'
+                        sharpe: '0.97',
+                        cagr: '24.59%'
                     }
                 },
-                description: '미국 주식 시장의 평균회귀 효과를 활용한 전략',
+                description: 'S&P500 지수 구성 종목에서 알파를 취합니다. LP가 유동성을  막대하게 공급하는 종목만으로 이루어져 있어 자금수용력에 제한이 거의 없습니다',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 8bp)',
                     '참여율 18% 이하 제한',
@@ -184,32 +156,32 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/us_meanreversion_performance.png',
-                        title: '누적 수익률 차트'
+                        src: '/assets/models/spx_skew_0_left.png',
+                        title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/us_meanreversion_drawdown.png',
-                        title: '드로다운 분석'
+                        src: '/assets/models/spx_skew_0_right.png',
+                        title: '누적 초과 수익률'
                     }
                 ]
             },
             {
                 id: 'us-momentum',
-                name: 'US-Momentum',
+                name: 'Trend-following_2',
                 benchmark: 'S&P500',
-                capacity: '90–130억',
+                capacity: '10조 이상',
                 metrics: {
                     inSample: {
-                        sharpe: '1.89',
-                        cagr: '19.1%'
+                        sharpe: '1.22',
+                        cagr: '61.30%'
                     },
                     outSample: {
-                        sharpe: '1.73',
-                        cagr: '17.4%'
+                        sharpe: '2.12',
+                        cagr: '179.95%'
                     }
                 },
-                description: '미국 주식 시장의 모멘텀 효과를 활용한 전략',
+                description: '포트폴리오 집중도가 높은 추세 추종 전략입니다.',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 10bp)',
                     '참여율 22% 이하 제한',
@@ -223,27 +195,32 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/us_momentum_performance.png',
-                        title: '누적 수익률 차트'
-                    }
+                        src: '/assets/models/turnover_adj_momentum_1_left.png',
+                        title: '누적 로그 수익률'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/turnover_adj_momentum_1_right.png',
+                        title: '누적 초과 수익률'
+                    },
                 ]
             },
             {
                 id: 'us-statarb',
-                name: 'US-StatArb',
+                name: 'Barbell',
                 benchmark: 'S&P500',
-                capacity: '80–140억',
+                capacity: '10조 이상',
                 metrics: {
                     inSample: {
-                        sharpe: '2.03',
-                        cagr: '18.6%'
+                        sharpe: '1.39',
+                        cagr: '43.55%'
                     },
                     outSample: {
-                        sharpe: '1.87',
-                        cagr: '16.9%'
+                        sharpe: '1.48',
+                        cagr: '35.19%'
                     }
                 },
-                description: '미국 주식 시장의 통계적 차익거래 전략',
+                description: 'de-coupling되어 움직이는 종목들에 동시에 투자하는 전략입니다. 일상적 시장 변동성에 영향을 거의 받지 않는 성질이 있어, 레짐 체인지를 파악하는 신호로 활용될 수 있습니다',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 12bp)',
                     '참여율 15% 이하 제한',
@@ -257,32 +234,32 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/us_statarb_performance.png',
-                        title: '누적 수익률 차트'
+                        src: '/assets/models/barbell_0_left.png',
+                        title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/us_statarb_pairs.png',
-                        title: '페어 분석'
+                        src: '/assets/models/barbell_0_right.png',
+                        title: '누적 초과 수익률'
                     }
                 ]
             },
             {
                 id: 'us-pairs',
-                name: 'US-Pairs',
+                name: 'Finance_1',
                 benchmark: 'S&P500',
-                capacity: '60–110억',
+                capacity: '5조 이상',
                 metrics: {
                     inSample: {
-                        sharpe: '1.95',
-                        cagr: '16.4%'
+                        sharpe: '1.07',
+                        cagr: '31.98%'
                     },
                     outSample: {
-                        sharpe: '1.81',
-                        cagr: '15.1%'
+                        sharpe: '1.09',
+                        cagr: '48.66%'
                     }
                 },
-                description: '미국 주식 시장의 페어 트레이딩 전략',
+                description: '재무 건전성과 성장률이 우수한 종목을 선별하여 투자합니다',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 14bp)',
                     '참여율 12% 이하 제한',
@@ -293,60 +270,38 @@ const DATA = {
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
                 ],
-                media: []
-            },
-            {
-                id: 'us-quality',
-                name: 'US-Quality',
-                benchmark: 'S&P500',
-                capacity: '120–180억',
-                metrics: {
-                    inSample: {
-                        sharpe: '1.72',
-                        cagr: '14.8%'
-                    },
-                    outSample: {
-                        sharpe: '1.58',
-                        cagr: '13.2%'
-                    }
-                },
-                description: '미국 주식 시장의 퀄리티 팩터 전략',
-                assumptions: [
-                    '수수료/슬리피지 보수적 가정 (편도 9bp)',
-                    '참여율 28% 이하 제한',
-                    '체결 규칙 고정 (VWAP 기준)'
-                ],
-                validation: [
-                    '워크포워드 & 레짐 스트레스 테스트',
-                    '코스트 민감도 체크',
-                    '로버스트니스 검증'
-                ],
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/us_quality_performance.png',
-                        title: '누적 수익률 차트'
+                        src: '/assets/models/spx_0_left.png',
+                        title: '누적 로그 수익률'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/spx_0_right.png',
+                        title: '누적 초과 수익률'
                     }
                 ]
-            }
+            },
+            
         ],
         regime: [
             {
                 id: 'regime-switch',
                 name: 'Regime-Switch',
-                benchmark: 'Mixed',
-                capacity: '80–120억',
+                benchmark: 'S&P500 또는 VN30',
+                capacity: '',
                 metrics: {
                     inSample: {
-                        sharpe: '2.21',
-                        cagr: '20.3%'
+                        sharpe: "",
+                        cagr: ''
                     },
                     outSample: {
-                        sharpe: '2.04',
-                        cagr: '18.7%'
+                        sharpe: '',
+                        cagr: ''
                     }
                 },
-                description: '시장 레짐 변화를 감지하여 전략을 전환하는 적응형 모델',
+                description: '고객들에게 마켓 레짐에 대한 뷰를 제공합니다.',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 16bp)',
                     '참여율 20% 이하 제한',
@@ -361,12 +316,12 @@ const DATA = {
                     {
                         type: 'image',
                         src: '/assets/models/regime_switch_performance.png',
-                        title: '누적 수익률 차트'
+                        title: '누적 수익률'
                     },
                     {
                         type: 'image',
                         src: '/assets/models/regime_switch_regimes.png',
-                        title: '레짐 분석'
+                        title: '레짐 시그널'
                     },
                     {
                         type: 'video',
@@ -380,11 +335,11 @@ const DATA = {
     projects: [
         {
             id: 'crypto-env',
-            title: '크립토 트레이딩 연구 환경 개발',
+            title: 'LLM 자동화 연구를 위한 크립토 트레이딩 연구 환경 개발',
             status: '진행중',
             period: '2025.7~',
-            description: 'Hummingbot 프레임워크와 패널 데이터 기반 연구 환경 통합',
-            techStack: ['Python', 'Hummingbot', 'Pandas', 'Docker'],
+            description: 'Hummingbot 프레임워크와 패널 데이터 기반 연구 환경 통합 및 LLM 커뮤니케이션 시스템 구축',
+            techStack: ['Python', 'Hummingbot', 'Pandas', 'Docker', 'A2A'],
             media: []
         },
         {
@@ -394,17 +349,17 @@ const DATA = {
             badge: '발표 우수상',
             period: '2025.4–2025.7',
             description: '(서울대학교 AI CEO 과정 · 빅데이터 핀테크 과정 · 법무법인 영진) KOSPI200 구성종목의 오더북 데이터를 활용해 VWAP/TWAP을 능가하는 집행 전략 개발',
-            techStack: ['Python', 'NumPy', 'Pandas', 'Matplotlib', 'SQL'],
+            techStack: [],
             media: [
                 {
                     type: 'image',
                     src: '/assets/projects/algo_intro.png',
-                    title: 'Backtest Overview'
+                    title: ''
                 },
                 {
                     type: 'image',
                     src: '/assets/projects/algo_finale.png',
-                    title: 'Orderbook Features'
+                    title: ''
                 }
             ]
         },
@@ -444,7 +399,7 @@ const DATA = {
             status: '완료',
             period: '2024.8',
             description: '<10ms 레이턴시 확보. 전필 수강제한 안 풀어주는 컴퓨터공학부를 향한 다전공생의 소리없는 아우성',
-            techStack: ['Python', 'Selenium', 'Threading'],
+            techStack: ['JavaScript'],
             media: []
         },
         {
