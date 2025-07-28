@@ -285,6 +285,7 @@ const DATA = {
             status: '진행중',
             period: '2025.7~',
             description: 'Hummingbot 프레임워크와 패널 데이터 기반 연구 환경 통합',
+            techStack: ['Python', 'Hummingbot', 'Pandas', 'Docker'],
             media: []
         },
         {
@@ -294,6 +295,7 @@ const DATA = {
             badge: '발표 우수상',
             period: '2025.4–2025.7',
             description: '(서울대학교 AI CEO 과정 · 빅데이터 핀테크 과정 · 법무법인 영진) KOSPI200 구성종목의 오더북 데이터를 활용해 VWAP/TWAP을 능가하는 집행 전략 개발',
+            techStack: ['Python', 'NumPy', 'Pandas', 'Matplotlib', 'SQL'],
             media: [
                 {
                     type: 'image',
@@ -313,6 +315,7 @@ const DATA = {
             status: '완료',
             period: '2024.10',
             description: '컴퓨터프로그래밍 수업 중간 개인 프로젝트. 중독성 있음',
+            techStack: ['C++', 'OpenGL', 'GLFW'],
             media: [
                 {
                     type: 'video',
@@ -327,6 +330,7 @@ const DATA = {
             status: '완료',
             period: '2024.12',
             description: '컴퓨터프로그래밍 수업 기말 개인 프로젝트. 타격감 있음',
+            techStack: ['C++', 'OpenGL', 'GLFW'],
             media: [
                 {
                     type: 'video',
@@ -341,6 +345,7 @@ const DATA = {
             status: '완료',
             period: '2024.8',
             description: '<10ms 레이턴시 확보. 전필 수강제한 안 풀어주는 컴퓨터공학부를 향한 다전공생의 소리없는 아우성',
+            techStack: ['Python', 'Selenium', 'Threading'],
             media: []
         },
         {
@@ -350,6 +355,7 @@ const DATA = {
             badge: '3rd prize',
             period: '2023.1',
             description: '유리창으로 향하는 야생 조류를 on-device(Coral Board) 탐지해 음성 신호로 쫓아 충돌을 방지',
+            techStack: ['Python', 'TensorFlow Lite', 'OpenCV', 'Edge TPU'],
             media: []
         }
     ]

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Card Layout Tests</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Test-specific styles */
+    .test-section {
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: #f9fafb;
+    }
+    
+    .test-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #d1d5db;
+    }
+    
+    .test-description {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    
+    .breakpoint-indicator {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #1f2937;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 1000;
+    }
+    
+    .accessibility-info {
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+    
+    .test-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .test-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .test-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 p-4">
+  <!-- Breakpoint Indicator -->
+  <div class="breakpoint-indicator">
+    <span class="sm:hidden">XS (&lt;640px)</span>
+    <span class="hidden sm:inline md:hidden">SM (640px+)</span>
+    <span class="hidden md:inline lg:hidden">MD (768px+)</span>
+    <span class="hidden lg:inline xl:hidden">LG (1024px+)</span>
+    <span class="hidden xl:inline">XL (1280px+)</span>
+  </div>
+
+  <div class="max-w-7xl mx-auto">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Project Card Layout Tests</h1>
+      <p class="text-gray-600">Comprehensive testing of enhanced project card layout with tech stack display</p>
+    </header>
+
+    <!-- Test 1: Projects with Tech Stack Data -->
+    <section class="test-section">
+      <h2 class="test-title">Test 1: Projects with Tech Stack Data</h2>
+      <p class="test-description">
+        Testing projects that have tech stack information. Verify that tech stack displays properly 
+        to the right of the title on desktop and stacks below on mobile.
+      </p>
+      <div class="accessibility-info">
+        <strong>Accessibility Check:</strong> Use Tab key to navigate through tech stack tags. 
+        Each tag should be focusable and have proper contrast.
+      </div>
+      <div class="test-grid" id="test-with-techstack"></div>
+    </section>
+
+    <!-- Test 2: Projects without Tech Stack Data -->
+    <section class="test-section">
+      <h2 class="test-title">Test 2: Projects without Tech Stack Data</h2>
+      <p class="test-description">
+        Testing projects that have no tech stack information. Verify that the layout remains 
+        consistent and the tech stack area remains empty without affecting spacing.
+      </p>
+      <div class="test-grid" id="test-without-techstack"></div>
+    </section>
+
+    <!-- Test 3: Mixed Tech Stack Scenarios -->
+    <section class="test-section">
+      <h2 class="test-title">Test 3: Mixed Tech Stack Scenarios</h2>
+      <p class="test-description">
+        Testing edge cases: empty arrays, null values, very long tech stack names, 
+        and many tech stack items.
+      </p>
+      <div class="test-grid" id="test-mixed-techstack"></div>
+    </section>
+
+    <!-- Test 4: Media Button Size Validation -->
+    <section class="test-section">
+      <h2 class="test-title">Test 4: Enhanced Media Button Sizes</h2>
+      <p class="test-description">
+        Testing the enlarged media buttons (80px min-height) with different numbers of media items.
+        Verify 3-column grid layout and proper aspect ratios.
+      </p>
+      <div class="accessibility-info">
+        <strong>Touch Target Check:</strong> On mobile, media buttons should be at least 44px for proper touch accessibility.
+      </div>
+      <div class="test-grid" id="test-media-sizes"></div>
+    </section>
+
+    <!-- Test 5: Status and Period Information Layout -->
+    <section class="test-section">
+      <h2 class="test-title">Test 5: Status and Period Information Positioning</h2>
+      <p class="test-description">
+        Testing that status badges and period information are positioned below the title on the left side,
+        and that completion badges remain associated with the title.
+      </p>
+      <div class="test-grid" id="test-status-layout"></div>
+    </section>
+
+    <!-- Test 6: Responsive Behavior Testing -->
+    <section class="test-section">
+      <h2 class="test-title">Test 6: Responsive Behavior</h2>
+      <p class="test-description">
+        Resize your browser window to test responsive behavior at key breakpoints: 
+        320px, 640px, 768px, 1024px, 1440px. Check tech stack stacking and media button sizing.
+      </p>
+      <div class="accessibility-info">
+        <strong>Responsive Test:</strong> Use browser dev tools to test different screen sizes. 
+        Pay attention to text readability and touch target sizes.
+      </div>
+      <div class="test-grid" id="test-responsive"></div>
+    </section>
+
+    <!-- Test 7: Accessibility Features -->
+    <section class="test-section">
+      <h2 class="test-title">Test 7: Accessibility Validation</h2>
+      <p class="test-description">
+        Testing keyboard navigation, screen reader compatibility, and focus indicators.
+      </p>
+      <div class="accessibility-info">
+        <strong>Keyboard Test:</strong> Use Tab, Shift+Tab, Enter, and Space keys to navigate. 
+        All interactive elements should be accessible via keyboard.
+      </div>
+      <div class="test-grid" id="test-accessibility"></div>
+    </section>
+
+    <!-- Instructions -->
+    <section class="test-section">
+      <h2 class="test-title">Testing Instructions</h2>
+      <div class="space-y-4 text-sm text-gray-700">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Manual Testing Steps:</h3>
+          <ol class="list-decimal list-inside space-y-2 ml-4">
+            <li>Test keyboard navigation using Tab key through all interactive elements</li>
+            <li>Verify focus indicators are visible and properly styled</li>
+            <li>Test media button interactions (click/tap to open modal)</li>
+            <li>Resize browser window to test responsive breakpoints</li>
+            <li>Check text readability at all screen sizes</li>
+            <li>Verify touch targets are at least 44px on mobile devices</li>
+            <li>Test with screen reader (if available) for proper announcements</li>
+            <li>Validate color contrast meets WCAG AA standards</li>
+          </ol>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Key Breakpoints to Test:</h3>
+          <ul class="list-disc list-inside space-y-1 ml-4">
+            <li><strong>320px:</strong> Very small mobile screens</li>
+            <li><strong>640px:</strong> Small mobile to tablet transition</li>
+            <li><strong>768px:</strong> Tablet portrait</li>
+            <li><strong>1024px:</strong> Tablet landscape / small desktop</li>
+            <li><strong>1440px:</strong> Standard desktop</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Media Modal for Testing -->
+  <div id="media-modal" class="fixed inset-0 hidden items-center justify-center z-50" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-black/70 transition-opacity" data-close></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-[min(92vw,960px)] mx-auto p-4">
+      <button class="absolute top-2 right-2 p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100" data-close>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div id="media-container" class="w-full"></div>
+      <div id="media-caption" class="text-sm text-gray-500 mt-3 text-center"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="components.js"></script>
+  <script>
+    // Test data for comprehensive testing
+    const testData = {
+      withTechStack: [
+        {
+          id: 'test-crypto-env',
+          title: '크립토 트레이딩 연구 환경 개발',
+          status: '진행중',
+          period: '2025.7~',
+          description: 'Hummingbot 프레임워크와 패널 데이터 기반 연구 환경 통합. 이 프로젝트는 암호화폐 거래를 위한 포괄적인 연구 환경을 구축하는 것을 목표로 합니다.',
+          techStack: ['Python', 'Hummingbot', 'Pandas', 'Docker'],
+          media: [
+            { type: 'image', src: '/assets/test1.jpg', title: 'Test Image 1' },
+            { type: 'video', src: '/assets/test1.mp4', title: 'Test Video 1' }
+          ]
+        },
+        {
+          id: 'test-execution-algo',
+          title: '틱 데이터 기반 주문집행 알고리즘 개발',
+          status: '완료',
+          badge: '발표 우수상',
+          period: '2025.4–2025.7',
+          description: 'KOSPI200 구성종목의 오더북 데이터를 활용해 VWAP/TWAP을 능가하는 집행 전략 개발',
+          techStack: ['Python', 'NumPy', 'Pandas', 'Matplotlib', 'SQL'],
+          media: [
+            { type: 'image', src: '/assets/test2.jpg', title: 'Backtest Results' },
+            { type: 'image', src: '/assets/test3.jpg', title: 'Algorithm Flow' },
+            { type: 'image', src: '/assets/test4.jpg', title: 'Performance Chart' }
+          ]
+        }
+      ],
+      
+      withoutTechStack: [
+        {
+          id: 'test-no-tech-1',
+          title: '수강신청 첫클릭 프로그램',
+          status: '완료',
+          period: '2024.8',
+          description: '<10ms 레이턴시 확보. 전필 수강제한 안 풀어주는 컴퓨터공학부를 향한 다전공생의 소리없는 아우성',
+          media: []
+        },
+        {
+          id: 'test-no-tech-2',
+          title: 'SNU GSDS Ambient AI Contest',
+          status: '완료',
+          badge: '3rd prize',
+          period: '2023.1',
+          description: '유리창으로 향하는 야생 조류를 on-device(Coral Board) 탐지해 음성 신호로 쫓아 충돌을 방지',
+          media: [
+            { type: 'image', src: '/assets/test5.jpg', title: 'Device Setup' }
+          ]
+        }
+      ],
+      
+      mixedTechStack: [
+        {
+          id: 'test-empty-array',
+          title: '빈 배열 테스트',
+          status: '진행중',
+          period: '2025.1',
+          description: 'techStack이 빈 배열인 경우 테스트',
+          techStack: [],
+          media: []
+        },
+        {
+          id: 'test-null-tech',
+          title: 'Null 값 테스트',
+          status: '완료',
+          period: '2024.12',
+          description: 'techStack이 null인 경우 테스트',
+          techStack: null,
+          media: []
+        },
+        {
+          id: 'test-long-tech-names',
+          title: '긴 기술명 테스트',
+          status: '완료',
+          period: '2024.11',
+          description: '매우 긴 기술 스택 이름들이 어떻게 표시되는지 테스트',
+          techStack: ['TensorFlow.js', 'React Native', 'PostgreSQL', 'Kubernetes'],
+          media: []
+        },
+        {
+          id: 'test-many-tech',
+          title: '많은 기술 스택 테스트',
+          status: '진행중',
+          period: '2025.2',
+          description: '매우 많은 기술 스택이 있는 경우의 레이아웃 테스트',
+          techStack: ['React', 'Vue.js', 'Angular', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'AWS', 'TypeScript'],
+          media: []
+        }
+      ],
+      
+      mediaSizes: [
+        {
+          id: 'test-single-media',
+          title: '단일 미디어 테스트',
+          status: '완료',
+          period: '2024.10',
+          description: '미디어가 하나만 있는 경우의 레이아웃 테스트',
+          techStack: ['C++', 'OpenGL'],
+          media: [
+            { type: 'video', src: '/assets/single.mp4', title: 'Single Video' }
+          ]
+        },
+        {
+          id: 'test-two-media',
+          title: '두 개 미디어 테스트',
+          status: '완료',
+          period: '2024.9',
+          description: '미디어가 두 개 있는 경우의 레이아웃 테스트',
+          techStack: ['Python', 'OpenCV'],
+          media: [
+            { type: 'image', src: '/assets/two1.jpg', title: 'Image 1' },
+            { type: 'image', src: '/assets/two2.jpg', title: 'Image 2' }
+          ]
+        },
+        {
+          id: 'test-six-media',
+          title: '여섯 개 미디어 테스트',
+          status: '진행중',
+          period: '2025.3',
+          description: '미디어가 많은 경우의 3열 그리드 레이아웃 테스트',
+          techStack: ['JavaScript', 'HTML5', 'CSS3'],
+          media: [
+            { type: 'image', src: '/assets/six1.jpg', title: 'Image 1' },
+            { type: 'image', src: '/assets/six2.jpg', title: 'Image 2' },
+            { type: 'video', src: '/assets/six3.mp4', title: 'Video 1' },
+            { type: 'image', src: '/assets/six4.jpg', title: 'Image 3' },
+            { type: 'image', src: '/assets/six5.jpg', title: 'Image 4' },
+            { type: 'video', src: '/assets/six6.mp4', title: 'Video 2' }
+          ]
+        }
+      ],
+      
+      statusLayout: [
+        {
+          id: 'test-status-progress',
+          title: '진행중 상태 테스트',
+          status: '진행중',
+          period: '2025.1~',
+          description: '진행중 상태의 프로젝트 레이아웃 테스트',
+          techStack: ['React', 'Node.js'],
+          media: []
+        },
+        {
+          id: 'test-status-complete-badge',
+          title: '완료 + 뱃지 테스트',
+          status: '완료',
+          badge: '최우수상',
+          period: '2024.12',
+          description: '완료 상태이면서 수상 뱃지가 있는 프로젝트 테스트',
+          techStack: ['Python', 'TensorFlow'],
+          media: []
+        },
+        {
+          id: 'test-long-title-badge',
+          title: '매우 긴 프로젝트 제목과 뱃지가 함께 있는 경우의 레이아웃 테스트',
+          status: '완료',
+          badge: '대상',
+          period: '2024.6–2024.12',
+          description: '긴 제목과 뱃지, 긴 기간 정보가 모두 있는 경우의 레이아웃 테스트',
+          techStack: ['JavaScript', 'TypeScript', 'React', 'Next.js'],
+          media: []
+        }
+      ]
+    };
+
+    // Render test cases
+    function renderTestCases() {
+      // Test 1: With tech stack
+      document.getElementById('test-with-techstack').innerHTML = 
+        testData.withTechStack.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+      
+      // Test 2: Without tech stack
+      document.getElementById('test-without-techstack').innerHTML = 
+        testData.withoutTechStack.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+      
+      // Test 3: Mixed scenarios
+      document.getElementById('test-mixed-techstack').innerHTML = 
+        testData.mixedTechStack.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+      
+      // Test 4: Media sizes
+      document.getElementById('test-media-sizes').innerHTML = 
+        testData.mediaSizes.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+      
+      // Test 5: Status layout
+      document.getElementById('test-status-layout').innerHTML = 
+        testData.statusLayout.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+      
+      // Test 6: Responsive (use a mix of all)
+      const responsiveTestData = [
+        ...testData.withTechStack.slice(0, 1),
+        ...testData.withoutTechStack.slice(0, 1),
+        ...testData.mixedTechStack.slice(2, 3),
+        ...testData.mediaSizes.slice(1, 2)
+      ];
+      document.getElementById('test-responsive').innerHTML = 
+        responsiveTestData.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+      
+      // Test 7: Accessibility (use projects with various interactive elements)
+      const accessibilityTestData = [
+        testData.withTechStack[1], // Has badge, tech stack, and media
+        testData.statusLayout[1]   // Has badge and different status
+      ];
+      document.getElementById('test-accessibility').innerHTML = 
+        accessibilityTestData.map(project => ComponentGenerator.generateProjectCard(project)).join('');
+    }
+
+    // Modal functionality for testing
+    function setupModal() {
+      const modal = document.getElementById('media-modal');
+      const mediaContainer = document.getElementById('media-container');
+      const mediaCaption = document.getElementById('media-caption');
+
+      // Handle media button clicks
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('.media-btn-large')) {
+          const btn = e.target.closest('.media-btn-large');
+          const mediaType = btn.dataset.mediaType;
+          const mediaSrc = btn.dataset.mediaSrc;
+          const mediaTitle = btn.dataset.mediaTitle;
+
+          if (mediaType === 'video') {
+            mediaContainer.innerHTML = `
+              <video controls class="w-full max-h-[70vh] rounded-lg">
+                <source src="${mediaSrc}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            `;
+          } else {
+            mediaContainer.innerHTML = `
+              <img src="${mediaSrc}" alt="${mediaTitle}" class="w-full max-h-[70vh] object-contain rounded-lg">
+            `;
+          }
+
+          mediaCaption.textContent = mediaTitle;
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          
+          // Focus management for accessibility
+          modal.focus();
+        }
+
+        // Close modal
+        if (e.target.dataset.close !== undefined) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+
+      // Keyboard support for modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+    }
+
+    // Initialize tests
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTestCases();
+      setupModal();
+      
+      // Add keyboard navigation test helper
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          console.log('Tab navigation - Current focus:', document.activeElement);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

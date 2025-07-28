@@ -91,42 +91,78 @@ class ComponentGenerator {
       `<span class="badge badge-info">${project.status}</span>` : 
       `<span class="badge badge-success">${project.status}</span>`;
 
+    // Generate tech stack display
+    const techStackHtml = project.techStack && Array.isArray(project.techStack) && project.techStack.length > 0 ? `
+      <div class="tech-stack-container flex flex-wrap gap-1 sm:justify-end">
+        ${project.techStack.filter(tech => tech && typeof tech === 'string').map(tech => `<span class="tech-stack-tag">${tech}</span>`).join('')}
+      </div>
+    ` : '';
+
     return `
       <article class="project-card rounded-xl border p-4 bg-white" data-project-id="${project.id}">
-        <div class="flex items-start justify-between gap-4">
-          <h3 class="font-semibold">
-            ${project.title}
-            ${badgeHtml}
-          </h3>
-          <div class="flex items-center gap-2">
+        <!-- Project Card Header -->
+        <div class="project-card-header mb-3">
+          <!-- Title Row: Project title and tech stack side-by-side -->
+          <div class="project-title-row flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-base leading-tight">
+                ${project.title}
+                ${badgeHtml}
+              </h3>
+            </div>
+            ${techStackHtml}
+          </div>
+          
+          <!-- Status Row: Status badge and period information below title on left side -->
+          <div class="project-status-row flex items-center gap-2 flex-wrap">
             ${statusBadge}
-            <span class="text-xs text-gray-500">${project.period}</span>
+            <span class="text-xs text-gray-500 font-medium leading-relaxed">${project.period}</span>
           </div>
         </div>
-        <p class="text-sm text-gray-600 mt-2 leading-relaxed">${project.description}</p>
         
-        <!-- Media Grid -->
-        ${project.media && project.media.length > 0 ? `
-        <div class="mt-4 grid grid-cols-3 gap-2">
-          ${project.media.map(media => this.generateMediaButton(media)).join('')}
+        <!-- Content Layout: Description + Media -->
+        <div class="flex flex-col md:flex-row gap-4">
+          <!-- Description (1/3 width) -->
+          <div class="w-full md:w-1/3">
+            <p class="text-sm text-gray-600 leading-relaxed">${project.description}</p>
+          </div>
+          
+          <!-- Media Grid (2/3 width) -->
+          ${project.media && Array.isArray(project.media) && project.media.length > 0 ? `
+          <div class="w-full md:w-2/3 flex justify-center md:justify-start">
+            <div class="media-grid media-count-${project.media.length} grid grid-cols-3 gap-3 w-full max-w-lg">
+              ${project.media.filter(media => media && typeof media === 'object').map(media => this.generateMediaButton(media)).join('')}
+            </div>
+          </div>
+          ` : ''}
         </div>
-        ` : ''}
       </article>
     `;
   }
 
   // Generate media button
   static generateMediaButton(media) {
-    const mediaTypeText = media.type === 'video' ? '영상' : '이미지';
+    // Validate media object
+    if (!media || typeof media !== 'object') {
+      return '';
+    }
+    
+    const mediaType = media.type || 'image';
+    const mediaTypeText = mediaType === 'video' ? '영상' : '이미지';
+    const mediaSrc = media.src || '';
+    const mediaTitle = media.title || `${mediaTypeText} 보기`;
     
     return `
-      <button class="media-btn aspect-video rounded-lg bg-gray-100 flex items-center justify-center text-xs text-gray-500 hover:ring-2 hover:ring-blue-500 transition-all duration-200"
-              data-media-type="${media.type}" 
-              data-media-src="${media.src}"
-              data-media-title="${media.title}" 
+      <button class="media-btn-large"
+              data-media-type="${mediaType}" 
+              data-media-src="${mediaSrc}"
+              data-media-title="${mediaTitle}" 
               aria-haspopup="dialog"
-              aria-label="${media.title} 보기">
-        ${mediaTypeText}
+              aria-label="${mediaTitle}"
+              role="button"
+              tabindex="0">
+        <span class="sr-only">${mediaTitle}</span>
+        <span aria-hidden="true">${mediaTypeText}</span>
       </button>
     `;
   }
