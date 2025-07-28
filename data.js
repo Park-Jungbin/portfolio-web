@@ -124,7 +124,7 @@ const DATA = {
                     }
                 ]
             },
-            
+
         ],
         us: [
             {
@@ -283,24 +283,13 @@ const DATA = {
                     }
                 ]
             },
-            
+
         ],
         regime: [
             {
                 id: 'regime-switch',
                 name: 'Regime-Switch',
                 benchmark: 'S&P500 또는 VN30',
-                capacity: '',
-                metrics: {
-                    inSample: {
-                        sharpe: "",
-                        cagr: ''
-                    },
-                    outSample: {
-                        sharpe: '',
-                        cagr: ''
-                    }
-                },
                 description: '고객들에게 마켓 레짐에 대한 뷰를 제공합니다.',
                 assumptions: [
                     '수수료/슬리피지 보수적 가정 (편도 16bp)',

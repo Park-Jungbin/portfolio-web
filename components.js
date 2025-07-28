@@ -13,13 +13,11 @@ class ComponentGenerator {
             <h3 class="text-xl font-semibold">${model.name}</h3>
             <p class="text-sm text-gray-600 mt-1">BM: ${model.benchmark}</p>
           </div>
-          <div class="text-xs text-gray-500 font-mono tabular-nums">Capacity ${model.capacity}</div>
+          ${model.capacity ? `<div class="text-xs text-gray-500 font-mono tabular-nums">Capacity ${model.capacity}</div>` : ''}
         </div>
         
         <!-- Performance Metrics -->
-        <div class="mt-4">
-          ${this.generateSimpleMetrics(model.metrics)}
-        </div>
+        ${model.metrics ? `<div class="mt-4">${this.generateSimpleMetrics(model.metrics)}</div>` : ''}
         
         <!-- Chart/Media Grid -->
         ${isRegimeCard ? `
@@ -47,6 +45,11 @@ class ComponentGenerator {
 
   // Generate simple performance metrics
   static generateSimpleMetrics(metrics) {
+    // Return empty string if metrics is not provided or invalid
+    if (!metrics || !metrics.inSample || !metrics.outSample) {
+      return '';
+    }
+    
     return `
       <div class="flex flex-wrap gap-6 text-sm">
         <div class="flex flex-col">

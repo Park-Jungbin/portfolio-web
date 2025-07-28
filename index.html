@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="박정빈(JB Park) - 퀀트 리서처 및 시스템 트레이딩 모델러의 포트폴리오. 한국/미국 주식 시장 대상 체계적 트레이딩 전략과 성과를 소개합니다.">
+  <meta name="description"
+    content="박정빈(JB Park) - 퀀트 리서처 및 시스템 트레이딩 모델러의 포트폴리오. 한국/미국 주식 시장 대상 체계적 트레이딩 전략과 성과를 소개합니다.">
   <meta name="keywords" content="퀀트, 시스템트레이딩, 알고리즘트레이딩, 포트폴리오, 한국주식, 미국주식, 박정빈">
   <meta name="author" content="박정빈 (JB Park)">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="">
+  <meta property="og:url" content="https://[username].github.io/[repository-name]">
   <meta property="og:title" content="박정빈 (JB Park) - 퀀트 포트폴리오">
   <meta property="og:description" content="데이터 기반 체계적 트레이딩 전략과 성과 분석">
-  <meta property="og:image" content="">
+  <meta property="og:image" content="https://[username].github.io/[repository-name]/assets/og-image.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="">
+  <meta property="twitter:url" content="https://[username].github.io/[repository-name]">
   <meta property="twitter:title" content="박정빈 (JB Park) - 퀀트 포트폴리오">
   <meta property="twitter:description" content="데이터 기반 체계적 트레이딩 전략과 성과 분석">
-  <meta property="twitter:image" content="">
+  <meta property="twitter:image" content="https://[username].github.io/[repository-name]/assets/og-image.png">
 
   <title>박정빈 (JB Park) - 퀀트 포트폴리오</title>
-  
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
 <body class="bg-white text-gray-900 font-sans antialiased">
   <!-- Skip to main content for accessibility -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50">
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50">
     메인 콘텐츠로 건너뛰기
   </a>
 
@@ -46,7 +49,7 @@
         <a href="#hero" class="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors">
           JB Park
         </a>
-        
+
         <div class="hidden sm:flex items-center gap-6 text-sm">
           <a href="#performance" class="text-gray-700 hover:text-blue-600 transition-colors">Performance</a>
           <a href="#projects" class="text-gray-700 hover:text-blue-600 transition-colors">Projects</a>
@@ -54,7 +57,8 @@
         </div>
 
         <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="sm:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" aria-label="메뉴 열기">
+        <button id="mobile-menu-btn"
+          class="sm:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" aria-label="메뉴 열기">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -74,35 +78,24 @@
 
   <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12 md:space-y-16">
     <!-- Hero Section -->
-    <section id="hero" class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-      <!-- Profile Photo -->
-      <div class="md:col-span-2 flex justify-center md:justify-start">
-        <div class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 overflow-hidden flex items-center justify-center shadow-lg">
-          <span class="text-gray-500 text-xs font-medium">[사진]</span>
-        </div>
-      </div>
-      
+    <section id="hero" class="space-y-4">
       <!-- Introduction -->
-      <div class="md:col-span-10 space-y-4 text-center md:text-left">
+      <div class="space-y-4 text-center md:text-left">
         <div>
           <h1 class="text-3xl md:text-4xl font-bold leading-tight text-gray-900">
-            박정빈 (JB Park)
+            박정빈
           </h1>
           <p class="text-lg md:text-xl mt-2 text-gray-700">
-            퀀트 리서처 · 시스템 트레이딩 모델러
+            퀀트 리서처
           </p>
           <p class="text-sm text-gray-500 mt-1">
             Last updated: 2025.07
           </p>
         </div>
-        
+
         <div class="prose prose-lg max-w-none">
           <p class="text-base md:text-lg text-gray-800 leading-relaxed">
-            데이터로 설명 가능한 신호를 선호하며, 과최적화를 피하고 집행 리스크를 먼저 생각합니다. 
-            모델 복잡도는 낮추되, 레짐 변화와 거래비용에 견딜 수 있도록 설계합니다. 
-            결과는 단순한 지표보다 <strong class="text-gray-900">일관성</strong>과 
-            <strong class="text-gray-900">용량 대응력</strong>으로 평가하며, 
-            서로 다른 소스의 알파 상관을 낮게 유지하는 포트폴리오 구성을 지향합니다.
+            좋은 의사결정 시스템을 계산 가능한 프로세스로 구현하는 것이 목표입니다.
           </p>
         </div>
       </div>
@@ -113,13 +106,16 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">Performance</h2>
-          
+
           <!-- Info Tooltip -->
           <div class="relative group">
-            <button class="inline-flex items-center justify-center w-6 h-6 text-xs rounded-full border border-gray-300 text-gray-600 hover:border-blue-500 hover:text-blue-600 transition-colors" aria-label="성과 정보">
+            <button
+              class="inline-flex items-center justify-center w-6 h-6 text-xs rounded-full border border-gray-300 text-gray-600 hover:border-blue-500 hover:text-blue-600 transition-colors"
+              aria-label="성과 정보">
               <span aria-hidden="true">?</span>
             </button>
-            <div class="hidden group-hover:block absolute left-1/2 transform -translate-x-1/2 top-8 z-20 w-80 max-w-[90vw] p-4 text-sm bg-white border rounded-lg shadow-xl tooltip-arrow">
+            <div
+              class="hidden group-hover:block absolute left-1/2 transform -translate-x-1/2 top-8 z-20 w-80 max-w-[90vw] p-4 text-sm bg-white border rounded-lg shadow-xl tooltip-arrow">
               <ul class="space-y-3 text-gray-700">
                 <li class="flex items-start gap-3">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
@@ -127,11 +123,13 @@
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                  <span class="leading-relaxed">모든 모델은 overfitting/stress/robustness 테스트를 통과하여 <strong>실운용 중</strong>입니다.</span>
+                  <span class="leading-relaxed">모든 모델은 overfitting/stress/robustness 테스트를 통과하여 <strong>실운용
+                      중</strong>입니다.</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                  <span class="leading-relaxed">거래비용을 보수적으로 가정한 백테스팅/트래킹 성과로, <strong>실운용 성과가 표시된 값보다 더 우수</strong>하게 나오는 경향이 있습니다.</span>
+                  <span class="leading-relaxed">거래비용을 보수적으로 가정한 백테스팅/트래킹 성과로, <strong>실운용 성과가 표시된 값보다 더 우수</strong>하게
+                    나오는 경향이 있습니다.</span>
                 </li>
               </ul>
             </div>
@@ -141,16 +139,16 @@
 
       <!-- Tab Navigation -->
       <div class="flex flex-wrap gap-2" role="tablist" aria-label="성과 카테고리">
-        <button class="tab-btn px-4 py-2 font-medium rounded-lg border transition-all duration-200" 
-                data-tab="kr" role="tab" aria-selected="false" id="tab-kr-btn">
+        <button class="tab-btn px-4 py-2 font-medium rounded-lg border transition-all duration-200" data-tab="kr"
+          role="tab" aria-selected="false" id="tab-kr-btn">
           한국 주식
         </button>
-        <button class="tab-btn px-4 py-2 font-medium rounded-lg border transition-all duration-200" 
-                data-tab="us" role="tab" aria-selected="false" id="tab-us-btn">
+        <button class="tab-btn px-4 py-2 font-medium rounded-lg border transition-all duration-200" data-tab="us"
+          role="tab" aria-selected="false" id="tab-us-btn">
           미국 주식
         </button>
-        <button class="tab-btn px-4 py-2 font-medium rounded-lg border transition-all duration-200" 
-                data-tab="regime" role="tab" aria-selected="false" id="tab-regime-btn">
+        <button class="tab-btn px-4 py-2 font-medium rounded-lg border transition-all duration-200" data-tab="regime"
+          role="tab" aria-selected="false" id="tab-regime-btn">
           마켓 레짐
         </button>
       </div>
@@ -191,10 +189,12 @@
     <!-- Contact Section -->
     <section id="contact" class="pt-4 scroll-mt-20">
       <div class="text-sm text-gray-600 flex flex-wrap items-center gap-4">
-        <a href="mailto:your@email" class="underline hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
+        <a href="mailto:contact@example.com"
+          class="underline hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
           Email
         </a>
-        <a href="#" class="underline hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
+        <a href="#"
+          class="underline hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">
           LinkedIn
         </a>
       </div>
@@ -203,18 +203,19 @@
     <!-- Footer -->
     <footer class="pt-8 border-t">
       <p class="text-xs text-gray-500 leading-relaxed">
-        본 페이지의 성과는 정보 제공 목적이며 투자 권유가 아닙니다. 
-        과거 성과는 미래 수익을 보장하지 않습니다. 수수료/슬리피지 가정 반영.
       </p>
     </footer>
   </main>
 
   <!-- Media Lightbox Modal -->
-  <div id="media-modal" class="fixed inset-0 hidden items-center justify-center z-50" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div id="media-modal" class="fixed inset-0 hidden items-center justify-center z-50" role="dialog" aria-modal="true"
+    aria-labelledby="modal-title">
     <div class="absolute inset-0 bg-black/70 transition-opacity" data-close aria-label="모달 닫기"></div>
-    <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-[min(92vw,960px)] mx-auto p-4 transform transition-all">
-      <button class="absolute top-2 right-2 p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100 transition-colors" 
-              data-close aria-label="모달 닫기">
+    <div
+      class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-[min(92vw,960px)] mx-auto p-4 transform transition-all">
+      <button
+        class="absolute top-2 right-2 p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100 transition-colors"
+        data-close aria-label="모달 닫기">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
@@ -230,4 +231,5 @@
   <script src="app.js"></script>
   <script src="validate-project-thumbnails.js"></script>
 </body>
+
 </html>
