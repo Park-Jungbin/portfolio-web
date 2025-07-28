@@ -31,12 +31,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/dividend_10_left.png',
+                        src: '../assets/models/dividend_10_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/dividend_10_right.png',
+                        src: '../assets/models/dividend_10_right.png',
                         title: '누적 초과 수익률'
                     }
                 ]
@@ -70,12 +70,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/anomaly_1_left.png',
+                        src: './assets/models/anomaly_1_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/anomaly_1_right.png',
+                        src: './assets/models/anomaly_1_right.png',
                         title: '누적 초과 수익률'
                     }
                 ]
@@ -109,17 +109,17 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/lynch_cut_left.png',
+                        src: './assets/models/lynch_cut_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/lynch_cut_right.png',
+                        src: './assets/models/lynch_cut_right.png',
                         title: '누적 초과 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/kr_statarb_heatmap.png',
+                        src: './assets/models/kr_statarb_heatmap.png',
                         title: '월별 수익 히트맵'
                     }
                 ]
@@ -156,12 +156,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/spx_skew_0_left.png',
+                        src: './assets/models/spx_skew_0_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/spx_skew_0_right.png',
+                        src: './assets/models/spx_skew_0_right.png',
                         title: '누적 초과 수익률'
                     }
                 ]
@@ -195,12 +195,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/turnover_adj_momentum_1_left.png',
+                        src: './assets/models/turnover_adj_momentum_1_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/turnover_adj_momentum_1_right.png',
+                        src: './assets/models/turnover_adj_momentum_1_right.png',
                         title: '누적 초과 수익률'
                     },
                 ]
@@ -234,12 +234,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/barbell_0_left.png',
+                        src: './assets/models/barbell_0_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/barbell_0_right.png',
+                        src: './assets/models/barbell_0_right.png',
                         title: '누적 초과 수익률'
                     }
                 ]
@@ -273,12 +273,12 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/spx_0_left.png',
+                        src: './assets/models/spx_0_left.png',
                         title: '누적 로그 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/spx_0_right.png',
+                        src: './assets/models/spx_0_right.png',
                         title: '누적 초과 수익률'
                     }
                 ]
@@ -304,17 +304,17 @@ const DATA = {
                 media: [
                     {
                         type: 'image',
-                        src: '/assets/models/regime_switch_performance.png',
+                        src: './assets/models/regime_switch_performance.png',
                         title: '누적 수익률'
                     },
                     {
                         type: 'image',
-                        src: '/assets/models/regime_switch_regimes.png',
+                        src: './assets/models/regime_switch_regimes.png',
                         title: '레짐 시그널'
                     },
                     {
                         type: 'video',
-                        src: '/assets/models/regime_switch_demo.mp4',
+                        src: './assets/models/regime_switch_demo.mp4',
                         title: '레짐 전환 시뮬레이션'
                     }
                 ]
@@ -342,12 +342,12 @@ const DATA = {
             media: [
                 {
                     type: 'image',
-                    src: '/assets/projects/algo_intro.png',
+                    src: './assets/projects/algo_intro.png',
                     title: ''
                 },
                 {
                     type: 'image',
-                    src: '/assets/projects/algo_finale.png',
+                    src: './assets/projects/algo_finale.png',
                     title: ''
                 }
             ]
@@ -362,7 +362,7 @@ const DATA = {
             media: [
                 {
                     type: 'video',
-                    src: '/assets/projects/basket_game.mp4',
+                    src: './assets/projects/basket_game.mp4',
                     title: 'Gameplay (mp4)'
                 }
             ]
@@ -377,7 +377,7 @@ const DATA = {
             media: [
                 {
                     type: 'video',
-                    src: '/assets/projects/brick_breaker.mp4',
+                    src: './assets/projects/brick_breaker.mp4',
                     title: 'Gameplay (mp4)'
                 }
             ]
