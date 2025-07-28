@@ -200,6 +200,7 @@ class PortfolioApp {
     // Load immediately for faster initial response
     this.switchTab('kr'); // Load Korean stocks by default
     this.loadProjects();
+    this.loadHobbies();
   }
 
   // Switch between tabs
@@ -286,6 +287,32 @@ class PortfolioApp {
       
     } catch (error) {
       console.error('Error loading projects:', error);
+      container.innerHTML = ComponentGenerator.generateErrorState(`데이터 로딩 오류: ${error.message}`);
+    }
+  }
+
+  // Load hobbies section
+  async loadHobbies() {
+    const container = document.getElementById('hobbies-container');
+    if (!container) return;
+
+    try {
+      // Check if DATA is available
+      if (typeof DATA === 'undefined') {
+        throw new Error('DATA is not defined. Make sure data.js is loaded.');
+      }
+      
+      const hobbies = DATA.hobbies;
+      if (!hobbies || hobbies.length === 0) {
+        container.innerHTML = ComponentGenerator.generateEmptyState('취미 프로젝트가 없습니다.');
+        return;
+      }
+
+      const html = hobbies.map(hobby => ComponentGenerator.generateProjectCard(hobby)).join('');
+      container.innerHTML = html;
+      
+    } catch (error) {
+      console.error('Error loading hobbies:', error);
       container.innerHTML = ComponentGenerator.generateErrorState(`데이터 로딩 오류: ${error.message}`);
     }
   }

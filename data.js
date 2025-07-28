@@ -353,36 +353,6 @@ const DATA = {
             ]
         },
         {
-            id: 'basketball-game',
-            title: '농구게임',
-            status: '완료',
-            period: '2024.10',
-            description: '컴퓨터프로그래밍 수업 중간 개인 프로젝트. 중독성 있음',
-            techStack: ['C++', 'OpenGL', 'GLFW'],
-            media: [
-                {
-                    type: 'video',
-                    src: './assets/projects/LetItGoal.mp4',
-                    title: 'Gameplay (mp4)'
-                }
-            ]
-        },
-        {
-            id: 'brick-breaker',
-            title: '벽돌깨기 앱',
-            status: '완료',
-            period: '2024.12',
-            description: '컴퓨터프로그래밍 수업 기말 개인 프로젝트. 타격감 있음',
-            techStack: ['C++', 'OpenGL', 'GLFW'],
-            media: [
-                {
-                    type: 'video',
-                    src: './assets/projects/brick_breaker.mp4',
-                    title: 'Gameplay (mp4)'
-                }
-            ]
-        },
-        {
             id: 'first-click',
             title: '수강신청 첫클릭 프로그램',
             status: '완료',
@@ -400,6 +370,38 @@ const DATA = {
             description: '유리창으로 향하는 야생 조류를 on-device(Coral Board) 탐지해 음성 신호로 쫓아 충돌을 방지',
             techStack: ['Python', 'TensorFlow Lite', 'OpenCV', 'Edge TPU'],
             media: []
+        }
+    ],
+    hobbies: [
+        {
+            id: 'basketball-game',
+            title: 'Let it Goal',
+            status: '완료',
+            period: '2024.10',
+            description: '컴퓨터프로그래밍 수업 중간 개인 프로젝트. 중독성 있음',
+            techStack: ['C++', 'Cocos2dx'],
+            media: [
+                {
+                    type: 'video',
+                    src: './assets/projects/LetItGoal.mp4',
+                    title: 'Gameplay (mp4)'
+                }
+            ]
+        },
+        {
+            id: 'brick-breaker',
+            title: 'Brick Breaker (Android)',
+            status: '완료',
+            period: '2024.12',
+            description: '컴퓨터프로그래밍 수업 기말 개인 프로젝트. 타격감 있음',
+            techStack: ['Java'],
+            media: [
+                {
+                    type: 'video',
+                    src: './assets/projects/brick_breaker.mp4',
+                    title: 'Gameplay (mp4)'
+                }
+            ]
         }
     ]
 };
