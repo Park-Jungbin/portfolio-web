@@ -398,12 +398,12 @@ const DATA = {
             media: [
                 {
                     type: 'image',
-                    src: '/assets/projects/exe_algo_backtest.png',
+                    src: '/assets/projects/algo_intro.png',
                     title: 'Backtest Overview'
                 },
                 {
                     type: 'image',
-                    src: '/assets/projects/exe_algo_orderbook.png',
+                    src: '/assets/projects/algo_finale.png',
                     title: 'Orderbook Features'
                 }
             ]

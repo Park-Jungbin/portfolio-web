@@ -23,14 +23,24 @@
   - Implement fallback behavior for missing or broken media files
   - _Requirements: 2.1, 2.2, 2.4, 2.5_
 
-- [ ] 3. Create special layout for market regime cards with single horizontal image
+- [x] 3. Create special layout for market regime cards with single horizontal image
+
+
+
+
+
   - Detect when model belongs to 'regime' category in generateModelCard method
   - Modify media grid layout for regime cards to show single large horizontal image
   - Update CSS to handle full-width horizontal image display with proper aspect ratio
   - Ensure responsive behavior for horizontal images across different screen sizes
   - _Requirements: 3.1, 3.2, 3.3, 3.4_
 
-- [ ] 4. Implement thumbnail display for project card media buttons
+- [x] 4. Implement thumbnail display for project card media buttons
+
+
+
+
+
   - Modify generateMediaButton method to show actual image/video thumbnails
   - Add CSS styling for thumbnail backgrounds in project media buttons
   - Create overlay styling for media type indicators on project thumbnails

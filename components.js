@@ -3,6 +3,9 @@
 class ComponentGenerator {
   // Generate model card HTML
   static generateModelCard(model) {
+    // Detect if this is a regime model
+    const isRegimeCard = model.id && model.id.includes('regime');
+    
     return `
       <div class="model-card border rounded-2xl p-6 shadow-sm mb-6" data-model-id="${model.id}">
         <div class="model-card-header flex justify-between items-start gap-4">
@@ -19,10 +22,17 @@ class ComponentGenerator {
         </div>
         
         <!-- Chart/Media Grid -->
+        ${isRegimeCard ? `
+        <div class="mt-6 regime-card-layout space-y-4">
+          ${this.generateModelMediaSlot(model.media, 0, '누적 수익률 차트', true)}
+          ${this.generateModelMediaSlot(model.media, 1, '레짐 분석 차트', true)}
+        </div>
+        ` : `
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           ${this.generateModelMediaSlot(model.media, 0, '누적 수익률 차트')}
           ${this.generateModelMediaSlot(model.media, 1, '드로다운/롤링Sharpe 차트')}
         </div>
+        `}
         
         <!-- Description Section -->
         <div class="description-always-visible mt-4 border-t pt-4">
@@ -133,24 +143,109 @@ class ComponentGenerator {
     const mediaSrc = media.src || '';
     const mediaTitle = media.title || `${mediaTypeText} 보기`;
     
-    return `
-      <button class="media-btn-large"
-              data-media-type="${mediaType}" 
-              data-media-src="${mediaSrc}"
-              data-media-title="${mediaTitle}" 
-              aria-haspopup="dialog"
-              aria-label="${mediaTitle}"
-              role="button"
-              tabindex="0">
-        <span class="sr-only">${mediaTitle}</span>
-        <span aria-hidden="true">${mediaTypeText}</span>
-      </button>
-    `;
+    // If media source is available, show thumbnail with overlay
+    if (mediaSrc) {
+      if (mediaType === 'video') {
+        // For video files, use video element to generate thumbnail
+        return `
+          <button class="media-btn-large media-thumbnail video-thumbnail"
+                  data-media-type="${mediaType}" 
+                  data-media-src="${mediaSrc}"
+                  data-media-title="${mediaTitle}" 
+                  aria-haspopup="dialog"
+                  aria-label="${mediaTitle}"
+                  role="button"
+                  tabindex="0">
+            <video class="video-thumbnail-element" 
+                   src="${mediaSrc}" 
+                   preload="metadata"
+                   muted
+                   onloadedmetadata="ComponentGenerator.setupVideoThumbnail(this)"
+                   onerror="ComponentGenerator.handleProjectMediaError(this.parentElement, '${mediaTypeText}')">
+            </video>
+            <div class="thumbnail-overlay">
+              <span class="media-type-indicator">▶</span>
+              <span class="media-title">${mediaTitle}</span>
+            </div>
+            <span class="sr-only">${mediaTitle}</span>
+          </button>
+        `;
+      } else {
+        // For image files, use background-image
+        return `
+          <button class="media-btn-large media-thumbnail"
+                  data-media-type="${mediaType}" 
+                  data-media-src="${mediaSrc}"
+                  data-media-title="${mediaTitle}" 
+                  aria-haspopup="dialog"
+                  aria-label="${mediaTitle}"
+                  role="button"
+                  tabindex="0"
+                  style="background-image: url('${mediaSrc}');">
+            <div class="thumbnail-overlay">
+              <span class="media-type-indicator">🖼</span>
+              <span class="media-title">${mediaTitle}</span>
+            </div>
+            <span class="sr-only">${mediaTitle}</span>
+            <img src="${mediaSrc}" 
+                 alt="${mediaTitle}"
+                 style="display: none;"
+                 onload="this.parentElement.style.aspectRatio = this.naturalWidth + '/' + this.naturalHeight"
+                 onerror="ComponentGenerator.handleProjectMediaError(this.parentElement, '${mediaTypeText}')">
+          </button>
+        `;
+      }
+    } else {
+      // Fallback to placeholder text when no media source
+      return `
+        <button class="media-btn-large"
+                data-media-type="${mediaType}" 
+                data-media-src="${mediaSrc}"
+                data-media-title="${mediaTitle}" 
+                aria-haspopup="dialog"
+                aria-label="${mediaTitle}"
+                role="button"
+                tabindex="0">
+          <span class="sr-only">${mediaTitle}</span>
+          <span aria-hidden="true">${mediaTypeText}</span>
+        </button>
+      `;
+    }
   }
 
   // Generate model media slot (chart placeholder or media button)
-  static generateModelMediaSlot(mediaArray, index, placeholderText) {
-    if (mediaArray && Array.isArray(mediaArray) && mediaArray[index]) {
+  static generateModelMediaSlot(mediaArray, index, placeholderText, isRegimeCard = false) {
+    if (isRegimeCard && mediaArray && Array.isArray(mediaArray) && mediaArray[index]) {
+      // For regime cards, show horizontal images stacked vertically using the specified index
+      const media = mediaArray[index];
+      const mediaType = media.type || 'image';
+      const mediaSrc = media.src || '';
+      const mediaTitle = media.title || placeholderText;
+      
+      return `
+        <button class="media-btn-chart media-thumbnail regime-card-media rounded-lg"
+                data-media-type="${mediaType}" 
+                data-media-src="${mediaSrc}"
+                data-media-title="${mediaTitle}" 
+                data-placeholder-text="${placeholderText}"
+                aria-haspopup="dialog"
+                aria-label="${mediaTitle}"
+                role="button"
+                tabindex="0"
+                style="background-image: url('${mediaSrc}');">
+          <div class="thumbnail-overlay">
+            <span class="media-type-indicator">${mediaType === 'video' ? '▶' : '🖼'}</span>
+            <span class="media-title">${mediaTitle}</span>
+          </div>
+          <span class="sr-only">${mediaTitle}</span>
+          <img src="${mediaSrc}" 
+               alt="${mediaTitle}"
+               style="display: none;"
+               onload="this.parentElement.style.aspectRatio = this.naturalWidth + '/' + this.naturalHeight"
+               onerror="ComponentGenerator.handleMediaError(this.parentElement, '${placeholderText}')">
+        </button>
+      `;
+    } else if (mediaArray && Array.isArray(mediaArray) && mediaArray[index]) {
       const media = mediaArray[index];
       const mediaType = media.type || 'image';
       const mediaSrc = media.src || '';
@@ -180,7 +275,12 @@ class ComponentGenerator {
         </button>
       `;
     } else {
-      return `<div class="chart-placeholder adaptive-aspect rounded-lg">[${placeholderText}]</div>`;
+      // For regime cards without media, show single placeholder
+      if (isRegimeCard) {
+        return `<div class="chart-placeholder regime-card-media rounded-lg">[${placeholderText}]</div>`;
+      } else {
+        return `<div class="chart-placeholder adaptive-aspect rounded-lg">[${placeholderText}]</div>`;
+      }
     }
   }
 
@@ -230,6 +330,32 @@ class ComponentGenerator {
     element.style.backgroundImage = '';
     element.classList.remove('media-thumbnail');
     element.innerHTML = `<span class="sr-only">${element.getAttribute('data-media-title')}</span><span aria-hidden="true">[${placeholderText}]</span>`;
+  }
+
+  // Handle project media loading errors
+  static handleProjectMediaError(element, fallbackText) {
+    element.style.backgroundImage = '';
+    element.classList.remove('media-thumbnail');
+    element.innerHTML = `<span class="sr-only">${element.getAttribute('data-media-title')}</span><span aria-hidden="true">${fallbackText}</span>`;
+  }
+
+  // Setup video thumbnail
+  static setupVideoThumbnail(videoElement) {
+    const button = videoElement.parentElement;
+    
+    // Set aspect ratio and thumbnail frame when metadata is loaded
+    videoElement.addEventListener('loadedmetadata', () => {
+      const aspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+      button.style.aspectRatio = aspectRatio;
+      
+      // Set video to a frame that's likely to have content (1 second in)
+      videoElement.currentTime = Math.min(1, videoElement.duration * 0.1);
+    });
+    
+    // Ensure video doesn't autoplay
+    videoElement.addEventListener('loadeddata', () => {
+      videoElement.pause();
+    });
   }
 }
 

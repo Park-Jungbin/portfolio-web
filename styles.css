@@ -312,6 +312,49 @@ html {
   line-height: 1.2;
 }
 
+/* Project media button thumbnail styling */
+.media-btn-large.media-thumbnail {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #e5e7eb;
+  background-color: #f8fafc;
+}
+
+/* Video thumbnail styling */
+.media-btn-large.video-thumbnail {
+  padding: 0;
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-thumbnail-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; /* Prevent video controls from interfering */
+}
+
+.video-thumbnail .thumbnail-overlay {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Enhanced video thumbnail hover effects */
+.media-btn-large.video-thumbnail:hover .video-thumbnail-element {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
 /* Chart-sized media button for performance cards */
 .media-btn-chart {
   width: 100%;
@@ -348,6 +391,21 @@ html {
   height: auto;
   min-height: 200px; /* Minimum height to ensure usability */
   max-height: 400px; /* Maximum height to prevent overly tall images */
+}
+
+/* Special layout for regime card media - horizontal images stacked vertically */
+.regime-card-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.regime-card-media {
+  width: 100%;
+  aspect-ratio: 16/9; /* Optimized for horizontal charts */
+  min-height: 200px; /* Good height for chart visibility */
+  max-height: 350px; /* Reasonable maximum height */
+  height: auto;
 }
 
 /* Thumbnail overlay for media type indicator and title */
@@ -389,6 +447,17 @@ html {
   border-color: #d1d5db;
   background-color: #f1f5f9;
   color: #4b5563;
+}
+
+/* Enhanced hover effects for project media thumbnails */
+.media-btn-large.media-thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+  border-color: #3b82f6;
+}
+
+.media-btn-large.media-thumbnail:hover .thumbnail-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
 }
 
 .media-btn-chart:hover:not(.media-thumbnail) {
@@ -769,6 +838,38 @@ html {
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Responsive behavior for regime card media */
+@media (max-width: 768px) {
+  .regime-card-layout {
+    gap: 0.75rem;
+  }
+  
+  .regime-card-media {
+    min-height: 180px;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .regime-card-layout {
+    gap: 0.5rem;
+  }
+  
+  .regime-card-media {
+    min-height: 160px;
+    max-height: 280px;
+    aspect-ratio: 16/10; /* Slightly taller aspect ratio for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .regime-card-media {
+    min-height: 140px;
+    max-height: 240px;
+    aspect-ratio: 4/3; /* More square aspect ratio for very small screens */
+  }
 }
 
 /* Responsive typography */

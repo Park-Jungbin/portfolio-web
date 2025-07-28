@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Thumbnail Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Project Media Button Thumbnail Test</h1>
+        
+        <!-- Test project card with media -->
+        <div id="test-container" class="space-y-6">
+            <!-- This will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="components.js"></script>
+    <script>
+        // Test the thumbnail display functionality
+        function runTest() {
+            const container = document.getElementById('test-container');
+            
+            // Test data with various media types
+            const testProjects = [
+                {
+                    id: 'test-with-media',
+                    title: 'Test Project with Media',
+                    status: '완료',
+                    period: '2024.1-2024.2',
+                    description: 'Testing thumbnail display for project media buttons',
+                    techStack: ['JavaScript', 'CSS'],
+                    media: [
+                        {
+                            type: 'image',
+                            src: '/assets/projects/exe_algo_backtest.png',
+                            title: 'Test Image 1'
+                        },
+                        {
+                            type: 'video',
+                            src: '/assets/projects/brick_breaker.mp4',
+                            title: 'Brick Breaker Game Video'
+                        },
+                        {
+                            type: 'image',
+                            src: '/assets/projects/nonexistent.png',
+                            title: 'Broken Image Test'
+                        }
+                    ]
+                },
+                {
+                    id: 'test-no-media',
+                    title: 'Test Project without Media',
+                    status: '진행중',
+                    period: '2024.3-',
+                    description: 'Testing fallback behavior when no media is available',
+                    techStack: ['HTML'],
+                    media: []
+                },
+                {
+                    id: 'test-empty-src',
+                    title: 'Test Project with Empty Media Source',
+                    status: '완료',
+                    period: '2024.4',
+                    description: 'Testing fallback when media src is empty',
+                    techStack: ['CSS'],
+                    media: [
+                        {
+                            type: 'image',
+                            src: '',
+                            title: 'Empty Source Test'
+                        }
+                    ]
+                }
+            ];
+            
+            // Generate test cards
+            testProjects.forEach(project => {
+                const cardHtml = ComponentGenerator.generateProjectCard(project);
+                const cardElement = document.createElement('div');
+                cardElement.innerHTML = cardHtml;
+                container.appendChild(cardElement);
+            });
+            
+            console.log('Test completed. Check the rendered cards for thumbnail display.');
+        }
+        
+        // Run test when page loads
+        document.addEventListener('DOMContentLoaded', runTest);
+    </script>
+</body>
+</html>

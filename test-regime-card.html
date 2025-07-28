@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regime Card Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-6">Regime Card Layout Test</h1>
+        
+        <div class="grid gap-6">
+            <!-- Regular Model Card -->
+            <div>
+                <h2 class="text-lg font-semibold mb-4">Regular Model Card (KR-Momentum)</h2>
+                <div id="regular-card"></div>
+            </div>
+            
+            <!-- Regime Model Card -->
+            <div>
+                <h2 class="text-lg font-semibold mb-4">Regime Model Card (Single Horizontal Image)</h2>
+                <div id="regime-card"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="components.js"></script>
+    <script>
+        // Test regular model card
+        const regularModel = DATA.models.kr[0]; // KR-Momentum
+        document.getElementById('regular-card').innerHTML = ComponentGenerator.generateModelCard(regularModel);
+        
+        // Test regime model card
+        const regimeModel = DATA.models.regime[0]; // Regime-Switch
+        document.getElementById('regime-card').innerHTML = ComponentGenerator.generateModelCard(regimeModel);
+        
+        console.log('Regular model ID:', regularModel.id);
+        console.log('Regime model ID:', regimeModel.id);
+        console.log('Is regime card detected:', regimeModel.id.includes('regime'));
+        console.log('Regime model media count:', regimeModel.media ? regimeModel.media.length : 0);
+        
+        // Add some styling to show the difference clearly
+        document.querySelector('#regime-card .regime-card-layout').style.border = '2px dashed #3b82f6';
+        document.querySelector('#regime-card .regime-card-layout').style.padding = '1rem';
+    </script>
+</body>
+</html>
