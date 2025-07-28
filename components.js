@@ -23,10 +23,10 @@ class ComponentGenerator {
           ${this.generateSimpleMetrics(model.metrics)}
         </div>
         
-        <!-- Chart Placeholders -->
+        <!-- Chart/Media Grid -->
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="chart-placeholder h-56 rounded-lg">[누적 수익률 차트]</div>
-          <div class="chart-placeholder h-56 rounded-lg">[드로다운/롤링Sharpe 차트]</div>
+          ${this.generateModelMediaSlot(model.media, 0, '누적 수익률 차트')}
+          ${this.generateModelMediaSlot(model.media, 1, '드로다운/롤링Sharpe 차트')}
         </div>
         
         <!-- Details Panel -->
@@ -165,6 +165,32 @@ class ComponentGenerator {
         <span aria-hidden="true">${mediaTypeText}</span>
       </button>
     `;
+  }
+
+  // Generate model media slot (chart placeholder or media button)
+  static generateModelMediaSlot(mediaArray, index, placeholderText) {
+    if (mediaArray && Array.isArray(mediaArray) && mediaArray[index]) {
+      const media = mediaArray[index];
+      const mediaType = media.type || 'image';
+      const mediaSrc = media.src || '';
+      const mediaTitle = media.title || placeholderText;
+      
+      return `
+        <button class="media-btn-chart h-56 rounded-lg"
+                data-media-type="${mediaType}" 
+                data-media-src="${mediaSrc}"
+                data-media-title="${mediaTitle}" 
+                aria-haspopup="dialog"
+                aria-label="${mediaTitle}"
+                role="button"
+                tabindex="0">
+          <span class="sr-only">${mediaTitle}</span>
+          <span aria-hidden="true">${mediaTitle}</span>
+        </button>
+      `;
+    } else {
+      return `<div class="chart-placeholder h-56 rounded-lg">[${placeholderText}]</div>`;
+    }
   }
 
   // Generate loading state

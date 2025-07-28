@@ -1,0 +1,21 @@
+This directory contains model performance charts and analysis images.
+
+Expected files:
+- kr_momentum_performance.png
+- kr_momentum_drawdown.png
+- kr_meanreversion_performance.png
+- kr_statarb_performance.png
+- kr_statarb_correlation.png
+- kr_statarb_heatmap.png
+- kr_value_performance.png
+- us_meanreversion_performance.png
+- us_meanreversion_drawdown.png
+- us_momentum_performance.png
+- us_statarb_performance.png
+- us_statarb_pairs.png
+- us_quality_performance.png
+- regime_switch_performance.png
+- regime_switch_regimes.png
+- regime_switch_demo.mp4
+
+These files should be actual performance charts and analysis visualizations for each trading model.

@@ -27,6 +27,18 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_momentum_performance.png',
+                        title: '누적 수익률 차트'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_momentum_drawdown.png',
+                        title: '드로다운 분석'
+                    }
                 ]
             },
             {
@@ -54,6 +66,13 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_meanreversion_performance.png',
+                        title: '누적 수익률 차트'
+                    }
                 ]
             },
             {
@@ -81,6 +100,23 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_statarb_performance.png',
+                        title: '누적 수익률 차트'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_statarb_correlation.png',
+                        title: '상관관계 분석'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_statarb_heatmap.png',
+                        title: '월별 수익 히트맵'
+                    }
                 ]
             },
             {
@@ -108,6 +144,13 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/kr_value_performance.png',
+                        title: '누적 수익률 차트'
+                    }
                 ]
             }
         ],
@@ -137,6 +180,18 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/us_meanreversion_performance.png',
+                        title: '누적 수익률 차트'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/us_meanreversion_drawdown.png',
+                        title: '드로다운 분석'
+                    }
                 ]
             },
             {
@@ -164,6 +219,13 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/us_momentum_performance.png',
+                        title: '누적 수익률 차트'
+                    }
                 ]
             },
             {
@@ -191,6 +253,18 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/us_statarb_performance.png',
+                        title: '누적 수익률 차트'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/us_statarb_pairs.png',
+                        title: '페어 분석'
+                    }
                 ]
             },
             {
@@ -218,7 +292,8 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
-                ]
+                ],
+                media: []
             },
             {
                 id: 'us-quality',
@@ -245,6 +320,13 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/us_quality_performance.png',
+                        title: '누적 수익률 차트'
+                    }
                 ]
             }
         ],
@@ -274,6 +356,23 @@ const DATA = {
                     '워크포워드 & 레짐 스트레스 테스트',
                     '코스트 민감도 체크',
                     '로버스트니스 검증'
+                ],
+                media: [
+                    {
+                        type: 'image',
+                        src: '/assets/models/regime_switch_performance.png',
+                        title: '누적 수익률 차트'
+                    },
+                    {
+                        type: 'image',
+                        src: '/assets/models/regime_switch_regimes.png',
+                        title: '레짐 분석'
+                    },
+                    {
+                        type: 'video',
+                        src: '/assets/models/regime_switch_demo.mp4',
+                        title: '레짐 전환 시뮬레이션'
+                    }
                 ]
             }
         ]
